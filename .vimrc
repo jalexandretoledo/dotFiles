@@ -1,19 +1,80 @@
-:imap kj <ESC>
-:imap KJ <ESC>
+"
+"
+"	João Alexandre de Toledo
+"	https://github.com/jalexandretoledo/
+"
+"
+"
 
+" Adding runtimepath for windows so we can use .vim instead of _vim
+if !exists("g:loaded_runtime")
+  set runtimepath=~/.vim,$VIMRUNTIME,~/.vim/bundle/vundle,~/.vim/after
+  let g:loaded_runtime = 1
+endif
+
+
+set nocompatible		" be iMproved, required
+filetype off			" required
+
+
+"
+" ===============================================================================
+"  Vundle
+" ===============================================================================
+"
+set rtp+=~/vimfiles/bundle/Vundle.vim/
+call vundle#begin('~/vimfiles/')
+
+" Keep Plugin commands between vundle#begin/end.
+Plugin 'VundleVim/Vundle.vim'	" let Vundle manage Vundle
+
+
+" Gui Plugins
+if has("gui_running")
+  Bundle 'bling/vim-airline'
+  Bundle 'altercation/vim-colors-solarized.git'
+endif
+
+call vundle#end()		" required
+filetype plugin indent on	" required
+
+"
+" ===============================================================================
+"
+
+
+" kj exits insert mode
+:imap kj <ESC>			
+
+" KJ also exits insert mode
+:imap KJ <ESC>			
+
+" replace current word with yanked text
 nnoremap S "_diwP
+
+" ????
 nnoremap X diw"0P
 
-set encoding=utf-8
-set nocompatible
+set encoding=utf-8		" encoding :)
+
+" Configura solarized
+" color darkblue			" color desert
+syntax enable
+if has("gui_running")
+  set background=light
+else
+  set background=dark
+endif
+let g:solarized_italic=0
+colorscheme solarized
+
+set rnu number			" relative line numbers
+set numberwidth=5		" line number alignment -> doesn't work with solarized
+
 source $VIMRUNTIME/vimrc_example.vim
 source $VIMRUNTIME/mswin.vim
 behave mswin
 
-execute pathogen#infect()
-
-"color desert
-color darkblue
 
 
 set diffexpr=MyDiff()
@@ -45,6 +106,3 @@ endfunction
 " echom ">^.^<"
 "
 
-" jtoledo, 2015-09-11
-set rnu number
-set numberwidth=10
