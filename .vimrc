@@ -56,12 +56,14 @@ nnoremap S "_diwP
 nnoremap X diw"0P
 
 set encoding=utf-8		" encoding :)
+set nobackup			" I've never needed this backup... after all, we user versioning system for that :)
 
 " Configura solarized
 " color darkblue			" color desert
 syntax enable
 if has("gui_running")
-  set background=light
+  "set background=light
+  set background=dark
 else
   set background=dark
 endif
