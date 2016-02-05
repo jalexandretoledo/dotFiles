@@ -55,6 +55,9 @@ nnoremap S "_diwP
 " ????
 nnoremap X diw"0P
 
+" \+L
+nnoremap <leader>l :nohlsearch<cr>:diffupdate<cr>:syntax sync fromstart<cr><c-l>
+
 set encoding=utf-8		" encoding :)
 set nobackup			" I've never needed this backup... after all, we user versioning system for that :)
 
