@@ -67,11 +67,9 @@ syntax enable
 if has("gui_running")
   "set background=light
   set background=dark
-else
-  set background=dark
+  let g:solarized_italic=0
+  colorscheme solarized
 endif
-let g:solarized_italic=0
-colorscheme solarized
 
 set rnu number			" relative line numbers
 set numberwidth=5		" line number alignment -> doesn't work with solarized
