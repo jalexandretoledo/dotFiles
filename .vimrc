@@ -22,6 +22,9 @@ filetype off			" required
 "  Vundle
 " ===============================================================================
 "
+" JAT, 2016-04-27: I don't know why, but Vundle suggests the bundle directory,
+" but my configuration (at least on Windows) doesn't have it
+set rtp+=~/vimfiles/Vundle.vim/
 set rtp+=~/vimfiles/bundle/Vundle.vim/
 call vundle#begin('~/vimfiles/')
 
@@ -29,7 +32,31 @@ call vundle#begin('~/vimfiles/')
 Plugin 'VundleVim/Vundle.vim'	" let Vundle manage Vundle
 
 
+
+
+
+
+
+" ===============================================================================
+" 	Google's vim-codefmt: https://github.com/google/vim-codefmt
+" ===============================================================================
+"
+" Add maktaba and codefmt to the runtimepath.
+" (The latter must be installed before it can be used.)
+Plugin 'google/vim-maktaba'
+Plugin 'google/vim-codefmt'
+
+" Also add Glaive, which is used to configure codefmt's maktaba flags. See
+" `:help :Glaive` for usage.
+Plugin 'google/vim-glaive'
+
+
+
+
+
+" ===============================================================================
 " Gui Plugins
+" ===============================================================================
 if has("gui_running")
   Bundle 'bling/vim-airline'
   Bundle 'altercation/vim-colors-solarized.git'
@@ -37,6 +64,24 @@ endif
 
 call vundle#end()		" required
 filetype plugin indent on	" required
+
+
+
+
+
+" ===============================================================================
+" 	Finish Google's vim-codefmt configuration
+" ===============================================================================
+" the glaive#Install() should go after the "call vundle#end()"
+call glaive#Install()
+" Optional: Enable codefmt's default mappings on the <Leader>= prefix.
+Glaive codefmt plugin[mappings]
+
+
+
+
+
+
 
 "
 " ===============================================================================
@@ -59,7 +104,6 @@ nnoremap X diw"0P
 nnoremap <leader>l :nohlsearch<cr>:diffupdate<cr>:syntax sync fromstart<cr><c-l>
 
 set encoding=utf-8		" encoding :)
-set nobackup			" I've never needed this backup... after all, we user versioning system for that :)
 
 " Configura solarized
 " color darkblue			" color desert
@@ -79,6 +123,7 @@ source $VIMRUNTIME/mswin.vim
 behave mswin
 
 
+set nobackup			" I've never needed this backup... after all, we user versioning system for that :)
 
 set diffexpr=MyDiff()
 function MyDiff()
