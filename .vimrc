@@ -113,6 +113,10 @@ if has("gui_running")
   set background=dark
   let g:solarized_italic=0
   colorscheme solarized
+
+  if has("gui_w32")
+    source $HOME/.gvimrc
+  endif
 endif
 
 set rnu number			" relative line numbers
