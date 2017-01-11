@@ -122,6 +122,7 @@ endif
 set rnu number			" relative line numbers
 set numberwidth=5		" line number alignment -> doesn't work with solarized
 set cursorline			" highlight current line
+set expandtab			" expand tabs into spaces
 
 source $VIMRUNTIME/vimrc_example.vim
 source $VIMRUNTIME/mswin.vim
