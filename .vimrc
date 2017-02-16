@@ -104,6 +104,13 @@ nnoremap X diw"0P
 " \+L
 nnoremap <leader>l :nohlsearch<cr>:diffupdate<cr>:syntax sync fromstart<cr><c-l>
 
+" Fonte: http://vim.wikia.com/wiki/Highlight_current_line
+" Highlight the current line and keep it highlighted after the cursor is
+" moved; it also sets mark h so you can type 'h to come back to the line;
+" enter :match to clear the highlighting
+"
+nnoremap <silent> <Leader>h mh:execute 'match Search /\%'.line('.').'l/'<CR>
+
 set encoding=utf-8		" encoding :)
 
 " Configura solarized
