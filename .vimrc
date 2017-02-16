@@ -60,6 +60,7 @@ Plugin 'google/vim-glaive'
 if has("gui_running")
   Bundle 'bling/vim-airline'
   Bundle 'altercation/vim-colors-solarized.git'
+  " Bundle 'bounceme/poppy.vim'
 endif
 
 call vundle#end()		" required
@@ -117,6 +118,8 @@ if has("gui_running")
   if has("gui_w32")
     source $HOME/.gvimrc
   endif
+else
+  highlight CursorLine ctermbg=DarkBlue
 endif
 
 set rnu number			" relative line numbers
