@@ -52,7 +52,27 @@ Plugin 'google/vim-glaive'
 
 
 
+" ===============================================================================
+" Erlang
+" ===============================================================================
+Plugin 'vim-erlang/vim-erlang-runtime'
+Plugin 'vim-erlang/vim-erlang-compiler'
+Plugin 'vim-erlang/vim-erlang-omnicomplete'
+Plugin 'vim-erlang/vim-erlang-tags'
 
+" ===============================================================================
+" Python 
+" (see https://realpython.com/blog/python/vim-and-python-a-match-made-in-heaven/)
+" ===============================================================================
+Plugin 'scrooloose/nerdtree'
+Plugin 'Konfekt/FastFold'
+Plugin 'tmhedberg/SimpylFold'
+Plugin 'vim-scripts/indentpython.vim'
+
+Plugin 'Valloric/YouCompleteMe'
+
+Plugin 'scrooloose/syntastic'
+Plugin 'nvie/vim-flake8'
 
 " ===============================================================================
 " Gui Plugins
@@ -121,6 +141,16 @@ endif
 
 set rnu number			" relative line numbers
 set numberwidth=5		" line number alignment -> doesn't work with solarized
+
+
+" ===============================================================================
+" Python configuration
+" (see https://realpython.com/blog/python/vim-and-python-a-match-made-in-heaven/)
+" ===============================================================================
+let g:ycm_autoclose_preview_window_after_completion=1
+map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
+let python_highlight_all=1
+
 
 source $VIMRUNTIME/vimrc_example.vim
 source $VIMRUNTIME/mswin.vim
