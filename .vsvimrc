@@ -1,0 +1,28 @@
+behave mswin                         " VS runs on MS Windows :)
+
+set tabstop=4                        " tab stop
+set number                           " show line numbers
+
+set cursorline                       " highlight current line
+
+set incsearch                        " incremental search
+set hlsearch                         " highlight searched (and found) text
+
+
+
+" kj exits insert mode
+:imap kj <ESC>
+
+" KJ also exits insert mode
+:imap KJ <ESC>
+
+
+" replace current word with yanked text
+nnoremap S "_diwP
+
+
+" ????
+nnoremap X diw"0P
+
+" \+L
+nnoremap <leader>l :nohlsearch<cr><c-l>

@@ -71,8 +71,27 @@ Plugin 'vim-scripts/indentpython.vim'
 
 Plugin 'Valloric/YouCompleteMe'
 
+
 Plugin 'scrooloose/syntastic'
 Plugin 'nvie/vim-flake8'
+
+" ===============================================================================
+" Python (at work)
+" ===============================================================================
+" Plugin 'w0rp/ale'
+" Plugin 'davidhalter/jedi-vim'
+" Plugin 'Valloric/YouCompleteMe'
+
+
+
+" ===============================================================================
+" FSharp
+" ===============================================================================
+Plugin 'fsharp/vim-fsharp'
+" Plugin 'vim-syntastic/syntastic'
+Plugin 'ervandew/supertab'
+
+
 
 " ===============================================================================
 " Gui Plugins
@@ -80,6 +99,7 @@ Plugin 'nvie/vim-flake8'
 if has("gui_running")
   Bundle 'bling/vim-airline'
   Bundle 'altercation/vim-colors-solarized.git'
+  " Bundle 'bounceme/poppy.vim'
 endif
 
 call vundle#end()		" required
@@ -123,6 +143,13 @@ nnoremap X diw"0P
 " \+L
 nnoremap <leader>l :nohlsearch<cr>:diffupdate<cr>:syntax sync fromstart<cr><c-l>
 
+" Fonte: http://vim.wikia.com/wiki/Highlight_current_line
+" Highlight the current line and keep it highlighted after the cursor is
+" moved; it also sets mark h so you can type 'h to come back to the line;
+" enter :match to clear the highlighting
+"
+nnoremap <silent> <Leader>h mh:execute 'match Search /\%'.line('.').'l/'<CR>
+
 set encoding=utf-8		" encoding :)
 
 " Configura solarized
@@ -137,10 +164,14 @@ if has("gui_running")
   if has("gui_w32")
     source $HOME/.gvimrc
   endif
+else
+  highlight CursorLine ctermbg=DarkBlue
 endif
 
 set rnu number			" relative line numbers
 set numberwidth=5		" line number alignment -> doesn't work with solarized
+set cursorline			" highlight current line
+set expandtab			" expand tabs into spaces
 
 
 " ===============================================================================
