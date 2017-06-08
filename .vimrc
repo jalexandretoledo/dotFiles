@@ -35,7 +35,10 @@ Plugin 'VundleVim/Vundle.vim'	" let Vundle manage Vundle
 
 
 
-
+" ===============================================================================
+" 	Essential
+" ===============================================================================
+Plugin 'tpope/vim-surround'
 
 " ===============================================================================
 " 	Google's vim-codefmt: https://github.com/google/vim-codefmt
@@ -64,12 +67,12 @@ Plugin 'vim-erlang/vim-erlang-tags'
 " Python 
 " (see https://realpython.com/blog/python/vim-and-python-a-match-made-in-heaven/)
 " ===============================================================================
-Plugin 'scrooloose/nerdtree'
+" Plugin 'scrooloose/nerdtree'
 Plugin 'Konfekt/FastFold'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'vim-scripts/indentpython.vim'
 
-Plugin 'Valloric/YouCompleteMe'
+" Plugin 'Valloric/YouCompleteMe'
 
 
 Plugin 'scrooloose/syntastic'
@@ -78,8 +81,8 @@ Plugin 'nvie/vim-flake8'
 " ===============================================================================
 " Python (at work)
 " ===============================================================================
-" Plugin 'w0rp/ale'
-" Plugin 'davidhalter/jedi-vim'
+Plugin 'w0rp/ale'
+Plugin 'davidhalter/jedi-vim'
 " Plugin 'Valloric/YouCompleteMe'
 
 
@@ -89,7 +92,17 @@ Plugin 'nvie/vim-flake8'
 " ===============================================================================
 Plugin 'fsharp/vim-fsharp'
 " Plugin 'vim-syntastic/syntastic'
-Plugin 'ervandew/supertab'
+" Plugin 'ervandew/supertab'
+
+
+" ===============================================================================
+" Experimental
+" ===============================================================================
+Plugin 'coderifous/textobj-word-column.vim'
+Plugin 'wellle/targets.vim'
+Plugin 'tpope/vim-abolish'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-speeddating'
 
 
 
@@ -140,7 +153,7 @@ nnoremap S "_diwP
 " ????
 nnoremap X diw"0P
 
-" \+L
+" \l   (\ + lower L)
 nnoremap <leader>l :nohlsearch<cr>:diffupdate<cr>:syntax sync fromstart<cr><c-l>
 
 " Fonte: http://vim.wikia.com/wiki/Highlight_current_line
@@ -149,6 +162,10 @@ nnoremap <leader>l :nohlsearch<cr>:diffupdate<cr>:syntax sync fromstart<cr><c-l>
 " enter :match to clear the highlighting
 "
 nnoremap <silent> <Leader>h mh:execute 'match Search /\%'.line('.').'l/'<CR>
+
+" \d    delete to the black hole register
+" source: https://www.reddit.com/r/vim/comments/6fujzj/easier_access_to_the_black_hole_register/dil4kro/
+nnoremap <leader>d "_d
 
 set encoding=utf-8		" encoding :)
 
