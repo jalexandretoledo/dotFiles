@@ -8,7 +8,7 @@
 
 " Adding runtimepath for windows so we can use .vim instead of _vim
 if !exists("g:loaded_runtime")
-  set runtimepath=~/.vim,$VIMRUNTIME,~/.vim/bundle/vundle,~/.vim/after
+  set runtimepath=~/vimfiles,$VIMRUNTIME,~/vimfiles/bundle,~/vimfiles/after
   let g:loaded_runtime = 1
 endif
 
@@ -22,11 +22,9 @@ filetype off			" required
 "  Vundle
 " ===============================================================================
 "
-" JAT, 2016-04-27: I don't know why, but Vundle suggests the bundle directory,
-" but my configuration (at least on Windows) doesn't have it
-set rtp+=~/vimfiles/Vundle.vim/
+" JAT, 2017-06-14: Vundle plugings will be put under ~/vimfiles/bundle
 set rtp+=~/vimfiles/bundle/Vundle.vim/
-call vundle#begin('~/vimfiles/')
+call vundle#begin('~/vimfiles/bundle/')
 
 " Keep Plugin commands between vundle#begin/end.
 Plugin 'VundleVim/Vundle.vim'	" let Vundle manage Vundle
@@ -75,7 +73,7 @@ Plugin 'vim-scripts/indentpython.vim'
 " Plugin 'Valloric/YouCompleteMe'
 
 
-Plugin 'scrooloose/syntastic'
+" Plugin 'scrooloose/syntastic'
 Plugin 'nvie/vim-flake8'
 
 " ===============================================================================
