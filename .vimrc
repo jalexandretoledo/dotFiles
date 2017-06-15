@@ -8,7 +8,7 @@
 
 " Adding runtimepath for windows so we can use .vim instead of _vim
 if !exists("g:loaded_runtime")
-  set runtimepath=~/vimfiles,$VIMRUNTIME,~/vimfiles/bundle,~/vimfiles/after
+  set runtimepath=~/.vim,$VIMRUNTIME,~/.vim/bundle,~/.vim/after
   let g:loaded_runtime = 1
 endif
 
@@ -22,9 +22,9 @@ filetype off			" required
 "  Vundle
 " ===============================================================================
 "
-" JAT, 2017-06-14: Vundle plugings will be put under ~/vimfiles/bundle
-set rtp+=~/vimfiles/bundle/Vundle.vim/
-call vundle#begin('~/vimfiles/bundle/')
+" JAT, 2017-06-15: Vundle plugings will be put under ~/.vim/bundle
+set rtp+=~/.vim/bundle/Vundle.vim/
+call vundle#begin('~/.vim/bundle/')
 
 " Keep Plugin commands between vundle#begin/end.
 Plugin 'VundleVim/Vundle.vim'	" let Vundle manage Vundle
