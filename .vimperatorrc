@@ -1,5 +1,6 @@
 autocmd LocationChange .*                             js modes.passAllKeys = false
 autocmd LocationChange mail\\.google\\.com            js modes.passAllKeys = true
+autocmd LocationChange inbox\\.google\\.com           js modes.passAllKeys = true
 autocmd LocationChange coolwanglu\\.github\\.io/vim.js/emterpreter/vim\\.html            js modes.passAllKeys = true
 
 
