@@ -183,9 +183,14 @@ else
   highlight CursorLine ctermbg=DarkBlue
 endif
 
+if has("macunix")
+        " for now disable cursorline
+else
+        set cursorline			" highlight current line
+endif
+
 set rnu number			" relative line numbers
 set numberwidth=5		" line number alignment -> doesn't work with solarized
-set cursorline			" highlight current line
 set expandtab			" expand tabs into spaces
 
 
