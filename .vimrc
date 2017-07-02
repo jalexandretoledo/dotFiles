@@ -38,6 +38,8 @@ Plugin 'VundleVim/Vundle.vim'	" let Vundle manage Vundle
 " ===============================================================================
 Plugin 'tpope/vim-surround'
 
+
+
 " ===============================================================================
 " 	Google's vim-codefmt: https://github.com/google/vim-codefmt
 " ===============================================================================
@@ -180,11 +182,17 @@ if has("gui_running")
     source $HOME/.gvimrc
   endif
 else
-  highlight CursorLine ctermbg=DarkBlue
+  if has("macunix")
+    "
+    highlight CursorLine ctermbg=DarkBlue
+  else
+    highlight CursorLine ctermbg=DarkBlue
+  endif
 endif
 
 if has("macunix")
         " for now disable cursorline
+        set cursorline			" highlight current line
 else
         set cursorline			" highlight current line
 endif
@@ -202,10 +210,11 @@ let g:ycm_autoclose_preview_window_after_completion=1
 map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 let python_highlight_all=1
 
-
-source $VIMRUNTIME/vimrc_example.vim
-source $VIMRUNTIME/mswin.vim
-behave mswin
+if has("w32")
+  source $VIMRUNTIME/vimrc_example.vim
+  source $VIMRUNTIME/mswin.vim
+  behave mswin
+endif
 
 
 set nobackup			" I've never needed this backup... after all, we user versioning system for that :)
