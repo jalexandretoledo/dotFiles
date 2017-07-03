@@ -206,14 +206,15 @@ set expandtab			" expand tabs into spaces
 " Python configuration
 " (see https://realpython.com/blog/python/vim-and-python-a-match-made-in-heaven/)
 " ===============================================================================
-let g:ycm_autoclose_preview_window_after_completion=1
-map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
+" let g:ycm_autoclose_preview_window_after_completion=1
+" map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 let python_highlight_all=1
 
-if has("w32")
+if has("win32")
   source $VIMRUNTIME/vimrc_example.vim
   source $VIMRUNTIME/mswin.vim
   behave mswin
+  " echom ">^.^<"
 endif
 
 
