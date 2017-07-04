@@ -104,6 +104,7 @@ Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-speeddating'
 
+Plugin 'johngrib/vim-game-code-break'
 
 
 " ===============================================================================
