@@ -106,13 +106,13 @@ Plugin 'tpope/vim-speeddating'
 
 Plugin 'johngrib/vim-game-code-break'
 
+Plugin 'bling/vim-airline'
 
 " ===============================================================================
 " Gui Plugins
 " ===============================================================================
 if has("gui_running")
-  Bundle 'bling/vim-airline'
-  Bundle 'altercation/vim-colors-solarized.git'
+  Plugin 'altercation/vim-colors-solarized.git'
   " Bundle 'bounceme/poppy.vim'
 endif
 
@@ -148,10 +148,10 @@ Glaive codefmt plugin[mappings]
 " KJ also exits insert mode
 :imap KJ <ESC>			
 
-" replace current word with yanked text
+" replace current word with yanked text, discard current word
 nnoremap S "_diwP
 
-" ????
+" replace current word with yanked text, yank current word
 nnoremap X diw"0P
 
 " \l   (\ + lower L)
@@ -220,6 +220,18 @@ endif
 
 
 set nobackup			" I've never needed this backup... after all, we user versioning system for that :)
+set nowritebackup
+set noswapfile
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Turn persistent undo on 
+" "    means that you can undo even when you close a buffer/VIM
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+try
+  set undodir=~/.vim/temp_dirs/undodir
+  set undofile
+catch
+endtry
 
 set diffexpr=MyDiff()
 function MyDiff()
