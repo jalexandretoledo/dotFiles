@@ -31,122 +31,88 @@ Plugin 'VundleVim/Vundle.vim'	" let Vundle manage Vundle
 
 
 
-
-
 " ===============================================================================
 " 	Essential
 " ===============================================================================
 Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-sensible'
 
-
-
-" ===============================================================================
-" 	Google's vim-codefmt: https://github.com/google/vim-codefmt
-" ===============================================================================
-"
-" Add maktaba and codefmt to the runtimepath.
-" (The latter must be installed before it can be used.)
-Plugin 'google/vim-maktaba'
-Plugin 'google/vim-codefmt'
-
-" Also add Glaive, which is used to configure codefmt's maktaba flags. See
-" `:help :Glaive` for usage.
-Plugin 'google/vim-glaive'
 
 
 
 " ===============================================================================
-" Erlang
+" Not essential at all... But it's cuttie
 " ===============================================================================
-Plugin 'vim-erlang/vim-erlang-runtime'
-Plugin 'vim-erlang/vim-erlang-compiler'
-Plugin 'vim-erlang/vim-erlang-omnicomplete'
-Plugin 'vim-erlang/vim-erlang-tags'
-
-" ===============================================================================
-" Python 
-" (see https://realpython.com/blog/python/vim-and-python-a-match-made-in-heaven/)
-" ===============================================================================
-" Plugin 'scrooloose/nerdtree'
-Plugin 'Konfekt/FastFold'
-Plugin 'tmhedberg/SimpylFold'
-Plugin 'vim-scripts/indentpython.vim'
-
-" Plugin 'Valloric/YouCompleteMe'
-
-
-" Plugin 'scrooloose/syntastic'
-Plugin 'nvie/vim-flake8'
-
-" ===============================================================================
-" Python (at work)
-" ===============================================================================
-Plugin 'w0rp/ale'
-Plugin 'davidhalter/jedi-vim'
-" Plugin 'Valloric/YouCompleteMe'
-
-
-
-" ===============================================================================
-" FSharp
-" ===============================================================================
-Plugin 'fsharp/vim-fsharp'
-" Plugin 'vim-syntastic/syntastic'
-" Plugin 'ervandew/supertab'
-
-
-" ===============================================================================
-" Experimental
-" ===============================================================================
-Plugin 'coderifous/textobj-word-column.vim'
-Plugin 'wellle/targets.vim'
-Plugin 'tpope/vim-abolish'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-speeddating'
-
-Plugin 'johngrib/vim-game-code-break'
-
 Plugin 'bling/vim-airline'
+
+
+" ===============================================================================
+""" Experimental
+" ===============================================================================
+""" General Functionality
+Plugin 'lifepillar/vim-mucomplete'
+Plugin 'scrooloose/syntastic'
+Plugin 'sirver/ultisnips'
+Plugin 'honza/vim-snippets'
+Plugin 'tpope/vim-commentary'
+Plugin 'chiel92/vim-autoformat'
+
 
 " ===============================================================================
 " Gui Plugins
 " ===============================================================================
 if has("gui_running")
   Plugin 'altercation/vim-colors-solarized.git'
-  " Bundle 'bounceme/poppy.vim'
 endif
 
 call vundle#end()		" required
 filetype plugin indent on	" required
 
+" ===============================================================================
+" Some experiments
+" ===============================================================================
+set hidden " Allow background buffers without saving
+set splitright " Split to right by default
 
+"" Text Wrapping
+set textwidth=79
+set colorcolumn=80
+set nowrap
 
+"" Search and Substitute
+set gdefault " use global flag by default in s: commands
+set hlsearch " highlight searches
+set ignorecase 
+set smartcase " don't ignore capitals in searches
+
+"" Tabs
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+
+set encoding=utf-8		" encoding :)
 
 
 " ===============================================================================
-" 	Finish Google's vim-codefmt configuration
+""" NetRW
 " ===============================================================================
-" the glaive#Install() should go after the "call vundle#end()"
-call glaive#Install()
-" Optional: Enable codefmt's default mappings on the <Leader>= prefix.
-Glaive codefmt plugin[mappings]
+let g:netrw_liststyle = 1 " Detail View
+let g:netrw_sizestyle = "H" " Human-readable file sizes
+let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+' " hide dotfiles
+let g:netrw_hide = 1 " hide dotfiles by default
+let g:netrw_banner = 0 " Turn off banner
+""" Explore in vertical split
+nnoremap <Leader>e :Explore! <enter>
 
 
-
-
-
-
-
-"
 " ===============================================================================
-"
+" Key mappings
+" ===============================================================================
 
-
-" kj exits insert mode
-:imap kj <ESC>			
-
-" KJ also exits insert mode
-:imap KJ <ESC>			
+" kj and KJ exit insert mode
+inoremap kj <ESC>			
+inoremap KJ <ESC>			
 
 " replace current word with yanked text, discard current word
 nnoremap S "_diwP
@@ -157,7 +123,7 @@ nnoremap X diw"0P
 " \l   (\ + lower L)
 nnoremap <leader>l :nohlsearch<cr>:diffupdate<cr>:syntax sync fromstart<cr><c-l>
 
-" Fonte: http://vim.wikia.com/wiki/Highlight_current_line
+" Source: http://vim.wikia.com/wiki/Highlight_current_line
 " Highlight the current line and keep it highlighted after the cursor is
 " moved; it also sets mark h so you can type 'h to come back to the line;
 " enter :match to clear the highlighting
@@ -168,14 +134,23 @@ nnoremap <silent> <Leader>h mh:execute 'match Search /\%'.line('.').'l/'<CR>
 " source: https://www.reddit.com/r/vim/comments/6fujzj/easier_access_to_the_black_hole_register/dil4kro/
 nnoremap <leader>d "_d
 
-set encoding=utf-8		" encoding :)
+" navigate between buffers
+nnoremap <C-H> :bp <enter>
+nnoremap <C-L> :bn <enter>
+
+
+" ===============================================================================
+" Visual
+" ===============================================================================
+
 
 " Configura solarized
-" color darkblue			" color desert
+color darkblue			" it could also be 'color desert'
+set background=dark
+
 syntax enable
+
 if has("gui_running")
-  "set background=light
-  set background=dark
   let g:solarized_italic=0
   colorscheme solarized
 
@@ -203,6 +178,9 @@ set numberwidth=5		" line number alignment -> doesn't work with solarized
 set expandtab			" expand tabs into spaces
 
 
+
+
+
 " ===============================================================================
 " Python configuration
 " (see https://realpython.com/blog/python/vim-and-python-a-match-made-in-heaven/)
@@ -212,9 +190,9 @@ set expandtab			" expand tabs into spaces
 let python_highlight_all=1
 
 if has("win32")
-  source $VIMRUNTIME/vimrc_example.vim
-  source $VIMRUNTIME/mswin.vim
-  behave mswin
+  " source $VIMRUNTIME/vimrc_example.vim
+  " source $VIMRUNTIME/mswin.vim
+  " behave mswin
   " echom ">^.^<"
 endif
 
@@ -233,32 +211,16 @@ try
 catch
 endtry
 
-set diffexpr=MyDiff()
-function MyDiff()
-  let opt = '-a --binary '
-  if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
-  if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
-  let arg1 = v:fname_in
-  if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
-  let arg2 = v:fname_new
-  if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
-  let arg3 = v:fname_out
-  if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
-  let eq = ''
-  if $VIMRUNTIME =~ ' '
-    if &sh =~ '\<cmd'
-      let cmd = '""' . $VIMRUNTIME . '\diff"'
-      let eq = '"'
-    else
-      let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
-    endif
-  else
-    let cmd = $VIMRUNTIME . '\diff'
-  endif
-  silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
-endfunction
 
-" Exibe uma DialogBox com o texto
-" echom ">^.^<"
-"
 
+
+"" Autocompletion
+" required by MUcomplete
+set completeopt=menuone,noinsert,noselect
+set shortmess+=c " Turn off completion messages
+
+inoremap <expr> <c-e> mucomplete#popup_exit("\<c-e>")
+inoremap <expr> <c-y> mucomplete#popup_exit("\<c-y>")
+inoremap <expr>  <cr> mucomplete#popup_exit("\<cr>")
+
+let g:mucomplete#enable_auto_at_startup = 1
