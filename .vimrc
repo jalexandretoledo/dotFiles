@@ -57,6 +57,9 @@ Plugin 'honza/vim-snippets'
 Plugin 'tpope/vim-commentary'
 Plugin 'chiel92/vim-autoformat'
 
+" Powershell
+Plugin 'PProvost/vim-ps1'
+
 
 " ===============================================================================
 " Gui Plugins
