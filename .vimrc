@@ -57,16 +57,17 @@ Plugin 'honza/vim-snippets'
 Plugin 'tpope/vim-commentary'
 Plugin 'chiel92/vim-autoformat'
 
+Plugin 'jalexandretoledo/visSum.vim'
+
+" ===============================================================================
 " Powershell
+" ===============================================================================
 Plugin 'PProvost/vim-ps1'
-
-
 
 " ===============================================================================
 " FSharp
 " ===============================================================================
 Plugin 'fsharp/vim-fsharp'
-
 
 " ===============================================================================
 " Gui Plugins
@@ -90,7 +91,7 @@ set colorcolumn=80
 set nowrap
 
 "" Search and Substitute
-set gdefault " use global flag by default in s: commands
+"" set gdefault " use global flag by default in s: commands
 set hlsearch " highlight searches
 set ignorecase 
 set smartcase " don't ignore capitals in searches
@@ -105,7 +106,7 @@ set encoding=utf-8		" encoding :)
 
 
 " ===============================================================================
-""" NetRW
+" NetRW
 " ===============================================================================
 let g:netrw_liststyle = 1 " Detail View
 let g:netrw_sizestyle = "H" " Human-readable file sizes
@@ -150,6 +151,7 @@ nnoremap <leader>d "_d
 " navigate between buffers
 nnoremap <C-H> :bp <enter>
 nnoremap <C-L> :bn <enter>
+nnoremap <leader>b :ls <enter>
 
 
 " ===============================================================================
@@ -209,8 +211,8 @@ if has("win32")
   " echom ">^.^<"
 endif
 
-
-set nobackup			" I've never needed this backup... after all, we user versioning system for that :)
+" I've never needed this backup... after all, we user versioning system for that :)
+set nobackup
 set nowritebackup
 set noswapfile
 
