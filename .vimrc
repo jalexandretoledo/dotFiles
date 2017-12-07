@@ -50,12 +50,17 @@ Plugin 'bling/vim-airline'
 """ Experimental
 " ===============================================================================
 """ General Functionality
+Plugin 'davidhalter/jedi-vim'
 Plugin 'lifepillar/vim-mucomplete'
-Plugin 'scrooloose/syntastic'
-Plugin 'sirver/ultisnips'
-Plugin 'honza/vim-snippets'
-Plugin 'tpope/vim-commentary'
-Plugin 'chiel92/vim-autoformat'
+Plugin 'tmhedberg/SimpylFold'
+Plugin 'Konfekt/FastFold'
+Plugin 'nvie/vim-flake8'
+
+"" Plugin 'scrooloose/syntastic'
+"" Plugin 'sirver/ultisnips'
+"" Plugin 'honza/vim-snippets'
+"" Plugin 'tpope/vim-commentary'
+"" Plugin 'chiel92/vim-autoformat'
 
 Plugin 'jalexandretoledo/visSum.vim'
 
@@ -203,6 +208,12 @@ set expandtab			" expand tabs into spaces
 " let g:ycm_autoclose_preview_window_after_completion=1
 " map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 let python_highlight_all=1
+
+" Vim is still compiled to be run with Python 3.5...
+" However, this is not guaranteed to work
+set pythonthreedll=python36.dll
+
+
 
 if has("win32")
   " source $VIMRUNTIME/vimrc_example.vim
