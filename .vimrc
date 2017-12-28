@@ -56,6 +56,8 @@ Plugin 'tmhedberg/SimpylFold'
 Plugin 'Konfekt/FastFold'
 Plugin 'nvie/vim-flake8'
 
+Plugin 'ludovicchabant/vim-lawrencium'
+
 "" Plugin 'scrooloose/syntastic'
 "" Plugin 'sirver/ultisnips'
 "" Plugin 'honza/vim-snippets'
@@ -63,6 +65,9 @@ Plugin 'nvie/vim-flake8'
 "" Plugin 'chiel92/vim-autoformat'
 
 Plugin 'jalexandretoledo/visSum.vim'
+
+"" Plugin 'jamessan/vim-gnupg'
+"" Plugin 'vim-scripts/gnupg.vim'
 
 " ===============================================================================
 " Powershell
@@ -227,10 +232,10 @@ set nobackup
 set nowritebackup
 set noswapfile
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Turn persistent undo on 
 " "    means that you can undo even when you close a buffer/VIM
-" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 try
   set undodir=~/.vim/temp_dirs/undodir
   set undofile
@@ -249,4 +254,35 @@ inoremap <expr> <c-e> mucomplete#popup_exit("\<c-e>")
 inoremap <expr> <c-y> mucomplete#popup_exit("\<c-y>")
 inoremap <expr>  <cr> mucomplete#popup_exit("\<cr>")
 
-let g:mucomplete#enable_auto_at_startup = 1
+let g:mucomplete#enable_auto_at_startup = 0
+
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 
+" show :ilist or ]I results in the quickfix window
+" 
+" source: https://www.reddit.com/r/vim/comments/1rzvsm/do_any_of_you_redirect_results_of_i_to_the/cdsvh8i/
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! s:ilist_qf(start_at_cursor)
+  redir => output
+    silent! exec 'normal! '.(a:start_at_cursor ? ']' : '[')."I"
+  redir END
+  let lines = split(output, '\n')
+  if lines[0] =~ '^Error detected'
+    echomsg "Could not find the word in file"
+    return
+  endif
+  let [filename, line_info] = [lines[0], lines[1:-1]]
+  "turn the :ilist output into a quickfix dictionary
+  let qf_entries = map(line_info, "{
+        \ 'filename': filename,
+        \ 'lnum': split(v:val)[1],
+        \ 'text': getline(split(v:val)[1])
+        \ }")
+  call setqflist(qf_entries)
+  cwindow
+endfunction
+
+noremap <silent> <leader>I :call <sid>ilist_qf(0)<CR>
+" noremap <silent> ]I :call <sid>ilist_qf(1)<CR>
