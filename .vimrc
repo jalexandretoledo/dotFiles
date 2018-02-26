@@ -66,7 +66,7 @@ Plugin 'ludovicchabant/vim-lawrencium'
 
 Plugin 'jalexandretoledo/visSum.vim'
 
-"" Plugin 'jamessan/vim-gnupg'
+Plugin 'jamessan/vim-gnupg'
 "" Plugin 'vim-scripts/gnupg.vim'
 
 " ===============================================================================
@@ -259,6 +259,36 @@ inoremap <expr>  <cr> mucomplete#popup_exit("\<cr>")
 
 let g:mucomplete#enable_auto_at_startup = 0
 
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 
+" GnuPG config
+" 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Tell the GnuPG plugin to armor new files.
+let g:GPGPreferArmor=1
+
+" Tell the GnuPG plugin to sign new files.
+let g:GPGPreferSign=1
+
+augroup GnuPGExtra
+" Set extra file options.
+    autocmd BufReadCmd,FileReadCmd *.\(gpg\|asc\|pgp\) call SetGPGOptions()
+" Automatically close unmodified files after inactivity.
+    autocmd CursorHold *.\(gpg\|asc\|pgp\) quit
+augroup END
+
+function SetGPGOptions()
+" Set updatetime to 1 minute.
+    set updatetime=60000
+" Fold at markers.
+    set foldmethod=marker
+" Automatically close all folds.
+    set foldclose=all
+" Only open folds with insert commands.
+    set foldopen=insert
+endfunction
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
