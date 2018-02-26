@@ -84,6 +84,7 @@ Plugin 'fsharp/vim-fsharp'
 " ===============================================================================
 if has("gui_running")
   Plugin 'altercation/vim-colors-solarized.git'
+  Plugin 'elmindreda/vimcolors.git'
 endif
 
 call vundle#end()		" required
@@ -145,7 +146,7 @@ nnoremap S "_diwP
 nnoremap X diw"0P
 
 " \l   (\ + lower L)
-nnoremap <leader>l :nohlsearch<cr>:diffupdate<cr>:syntax sync fromstart<cr><c-l>
+nnoremap <leader>l :match<cr>:nohlsearch<cr>:diffupdate<cr>:syntax sync fromstart<cr><c-l>
 
 " Source: http://vim.wikia.com/wiki/Highlight_current_line
 " Highlight the current line and keep it highlighted after the cursor is
@@ -177,7 +178,9 @@ syntax enable
 
 if has("gui_running")
   let g:solarized_italic=0
-  colorscheme solarized
+  " colorscheme solarized
+  colorscheme phosphor
+  " colorscheme elmindreda
 
   if has("gui_w32")
     source $HOME/.gvimrc
