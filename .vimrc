@@ -165,6 +165,10 @@ nnoremap <C-L> :bn <enter>
 nnoremap <leader>b :ls <enter>
 
 
+" \f : fold da tag que inicia na linha atual (XML)
+nnoremap <leader>f 0f<lmb*mf'bzf'fj
+
+
 " ===============================================================================
 " Visual
 " ===============================================================================
