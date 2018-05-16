@@ -58,6 +58,8 @@ Plugin 'nvie/vim-flake8'
 
 Plugin 'ludovicchabant/vim-lawrencium'
 
+Plugin 'jalvesaq/Nvim-R'
+
 "" Plugin 'scrooloose/syntastic'
 "" Plugin 'sirver/ultisnips'
 "" Plugin 'honza/vim-snippets'
@@ -221,17 +223,16 @@ set expandtab			" expand tabs into spaces
 " map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 let python_highlight_all=1
 
-" Vim is still compiled to be run with Python 3.5...
-" However, this is not guaranteed to work
-set pythonthreedll=python36.dll
-
-
-
 if has("win32")
   " source $VIMRUNTIME/vimrc_example.vim
   " source $VIMRUNTIME/mswin.vim
   " behave mswin
   " echom ">^.^<"
+ 
+
+  " Vim is still compiled to be run with Python 3.5...
+  " However, this is not guaranteed to work
+  set pythonthreedll=python36.dll
 endif
 
 " I've never needed this backup... after all, we user versioning system for that :)
@@ -283,7 +284,7 @@ augroup GnuPGExtra
     autocmd CursorHold *.\(gpg\|asc\|pgp\) quit
 augroup END
 
-function SetGPGOptions()
+function! SetGPGOptions()
 " Set updatetime to 1 minute.
     set updatetime=60000
 " Fold at markers.
