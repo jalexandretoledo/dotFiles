@@ -39,7 +39,6 @@ Plugin 'tpope/vim-sensible'
 
 
 
-
 " ===============================================================================
 " Not essential at all... But it's cuttie
 " ===============================================================================
@@ -55,10 +54,11 @@ Plugin 'lifepillar/vim-mucomplete'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'Konfekt/FastFold'
 Plugin 'nvie/vim-flake8'
+Plugin 'tpope/vim-apathy'
 
 Plugin 'ludovicchabant/vim-lawrencium'
 
-"" Plugin 'scrooloose/syntastic'
+Plugin 'scrooloose/syntastic'
 "" Plugin 'sirver/ultisnips'
 "" Plugin 'honza/vim-snippets'
 "" Plugin 'tpope/vim-commentary'
@@ -68,6 +68,9 @@ Plugin 'jalexandretoledo/visSum.vim'
 
 Plugin 'jamessan/vim-gnupg'
 "" Plugin 'vim-scripts/gnupg.vim'
+
+"Plugin 'hoffstein/vim-tsql'
+Plugin 'vim-scripts/sqlserver.vim'
 
 " ===============================================================================
 " Powershell
@@ -160,9 +163,15 @@ nnoremap <silent> <Leader>h mh:execute 'match Search /\%'.line('.').'l/'<CR>
 nnoremap <leader>d "_d
 
 " navigate between buffers
-nnoremap <C-H> :bp <enter>
-nnoremap <C-L> :bn <enter>
 nnoremap <leader>b :ls <enter>
+nnoremap gp :bp <enter>
+nnoremap gn :bn <enter>
+
+" Last *viewed* buffer
+nnoremap gh :b#<CR>
+
+" List then choose
+nnoremap gb :ls<CR>:b<Space>
 
 
 " \f : fold da tag que inicia na linha atual (XML)
@@ -182,8 +191,8 @@ syntax enable
 
 if has("gui_running")
   let g:solarized_italic=0
-  " colorscheme solarized
-  colorscheme phosphor
+  colorscheme solarized
+  " colorscheme phosphor
   " colorscheme elmindreda
 
   if has("gui_w32")
@@ -283,7 +292,7 @@ augroup GnuPGExtra
     autocmd CursorHold *.\(gpg\|asc\|pgp\) quit
 augroup END
 
-function SetGPGOptions()
+function! SetGPGOptions()
 " Set updatetime to 1 minute.
     set updatetime=60000
 " Fold at markers.
