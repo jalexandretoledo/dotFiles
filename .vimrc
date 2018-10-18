@@ -330,5 +330,15 @@ function! s:ilist_qf(start_at_cursor)
   cwindow
 endfunction
 
+
+"
+" Utiliza o módulo json.tool do Python3 para formatar o range de linhas
+" informado. Cuidado! A versão do módulo distribuída com o Python2 muda
+" reordena os ítens!
+"
+" Fonte: https://stackoverflow.com/questions/16620835/how-to-fix-json-indentation-in-vim
+"
+command! -range -nargs=0 -bar JsonTool <line1>,<line2>!py -3 -m json.tool
+
 noremap <silent> <leader>I :call <sid>ilist_qf(0)<CR>
 " noremap <silent> ]I :call <sid>ilist_qf(1)<CR>
