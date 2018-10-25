@@ -195,6 +195,9 @@
     },
     "properties": {},
     "blacklist": [
+        "mail.google.com",
+        "inbox.google.com*",
+        "localhost"
         "localhost:8888/notebooks/*"
     ]
 }
