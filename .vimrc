@@ -241,6 +241,10 @@ if has("win32")
   " Vim is still compiled to be run with Python 3.5...
   " However, this is not guaranteed to work
   set pythonthreedll=python36.dll
+
+  "
+  " https://github.com/davidhalter/jedi-vim/issues/870
+  py3 import os; sys.executable=os.path.join(sys.prefix, 'python.exe')
 endif
 
 " I've never needed this backup... after all, we user versioning system for that :)
