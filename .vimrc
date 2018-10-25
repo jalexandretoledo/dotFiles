@@ -231,6 +231,16 @@ set expandtab			" expand tabs into spaces
 " map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 let python_highlight_all=1
 
+
+"
+" Utiliza o módulo json.tool do Python3 para formatar o range de linhas
+" informado. Cuidado! A versão do módulo distribuída com o Python2 muda
+" reordena os ítens!
+"
+" Fonte: https://stackoverflow.com/questions/16620835/how-to-fix-json-indentation-in-vim
+"
+" command! -range -nargs=0 -bar JsonTool <line1>,<line2> !python3 -m json.tool
+
 if has("win32")
   " source $VIMRUNTIME/vimrc_example.vim
   " source $VIMRUNTIME/mswin.vim
@@ -245,6 +255,11 @@ if has("win32")
   "
   " https://github.com/davidhalter/jedi-vim/issues/870
   py3 import os; sys.executable=os.path.join(sys.prefix, 'python.exe')
+
+
+  command! -range -nargs=0 -bar JsonTool <line1>,<line2> !py -3 -m json.tool
+else
+  command! -range -nargs=0 -bar JsonTool <line1>,<line2> !python3 -m json.tool
 endif
 
 " I've never needed this backup... after all, we user versioning system for that :)
@@ -270,9 +285,9 @@ endtry
 set completeopt=menuone,noinsert,noselect
 set shortmess+=c " Turn off completion messages
 
-inoremap <expr> <c-e> mucomplete#popup_exit("\<c-e>")
-inoremap <expr> <c-y> mucomplete#popup_exit("\<c-y>")
-inoremap <expr>  <cr> mucomplete#popup_exit("\<cr>")
+" inoremap <expr> <c-e> mucomplete#popup_exit("\<c-e>")
+" inoremap <expr> <c-y> mucomplete#popup_exit("\<c-y>")
+" inoremap <expr>  <cr> mucomplete#popup_exit("\<cr>")
 
 let g:mucomplete#enable_auto_at_startup = 0
 
@@ -335,14 +350,6 @@ function! s:ilist_qf(start_at_cursor)
 endfunction
 
 
-"
-" Utiliza o módulo json.tool do Python3 para formatar o range de linhas
-" informado. Cuidado! A versão do módulo distribuída com o Python2 muda
-" reordena os ítens!
-"
-" Fonte: https://stackoverflow.com/questions/16620835/how-to-fix-json-indentation-in-vim
-"
-command! -range -nargs=0 -bar JsonTool <line1>,<line2>!py -3 -m json.tool
 
 noremap <silent> <leader>I :call <sid>ilist_qf(0)<CR>
 " noremap <silent> ]I :call <sid>ilist_qf(1)<CR>

@@ -180,6 +180,12 @@
         },
         "<S-Esc>": {
             "type": "addon.toggle.enabled"
+        },
+        "'": {
+            "type": "mark.jump.prefix"
+        },
+        "m": {
+            "type": "mark.set.prefix"
         }
     },
     "search": {
@@ -193,11 +199,14 @@
             "wikipedia": "https://en.wikipedia.org/w/index.php?search={}"
         }
     },
-    "properties": {},
     "blacklist": [
         "mail.google.com",
         "inbox.google.com*",
         "localhost"
-        "localhost:8888/notebooks/*"
-    ]
+    ],
+    "properties": {
+        "hintchars": "abcdefghijklmnopqrstuvwxyz",
+        "smoothscroll": false,
+        "adjacenttab": true
+    }
 }
