@@ -196,9 +196,7 @@ if has("gui_running")
   " colorscheme phosphor
   " colorscheme elmindreda
 
-  if has("gui_w32")
-    source $HOME/.gvimrc
-  endif
+  source $HOME/.gvimrc
 else
   if has("macunix")
     "
@@ -250,14 +248,24 @@ if has("win32")
 
   " Vim is still compiled to be run with Python 3.5...
   " However, this is not guaranteed to work
-  set pythonthreedll=python36.dll
+  set pythonthreedll=python37.dll
 
   "
   " https://github.com/davidhalter/jedi-vim/issues/870
   py3 import os; sys.executable=os.path.join(sys.prefix, 'python.exe')
 
-
+  "
+  " JsonTool
+  "
   command! -range -nargs=0 -bar JsonTool <line1>,<line2> !py -3 -m json.tool
+
+  " 
+  " Increment/Decrement
+  "
+  " On Windows, C-a e C-x are used to select all and cut...
+  "
+  nnoremap <A-a> <C-a> 
+  nnoremap <A-x> <C-x>
 else
   command! -range -nargs=0 -bar JsonTool <line1>,<line2> !python3 -m json.tool
 endif

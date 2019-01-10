@@ -1,10 +1,10 @@
-set guifont=Consolas:h11:cDEFAULT
-
-" Increment/Decrement
-" 
-nnoremap <A-a> <C-a> 
-nnoremap <A-x> <C-x>
-
+if has("gui_gtk2")
+    set guifont=Ubuntu\ Mono\ 15
+elseif has("gui_win32")
+    set guifont=Consolas:h11:cDEFAULT
+elseif has("gui_macvim")
+    set guifont=Menlo\ Regular:h14
+endif
 
 set guioptions-=m " Turn off menubar
 set guioptions-=T " Turn off toolbar
