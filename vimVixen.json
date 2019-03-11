@@ -1,101 +1,117 @@
 {
+
     "keymaps": {
+
         "0": {
             "type": "scroll.home"
         },
         ":": {
             "type": "command.show"
         },
-        "o": {
-            "type": "command.show.open",
-            "alter": false
-        },
-        "O": {
-            "type": "command.show.open",
-            "alter": true
-        },
-        "t": {
-            "type": "command.show.tabopen",
-            "alter": false
-        },
-        "T": {
-            "type": "command.show.tabopen",
-            "alter": true
-        },
-        "w": {
-            "type": "command.show.winopen",
-            "alter": false
-        },
-        "W": {
-            "type": "command.show.winopen",
-            "alter": true
-        },
-        "b": {
-            "type": "command.show.buffer"
-        },
-        "k": {
-            "type": "scroll.vertically",
-            "count": -1
-        },
-        "j": {
-            "type": "scroll.vertically",
-            "count": 1
-        },
-        "h": {
-            "type": "scroll.horizonally",
-            "count": -1
-        },
-        "l": {
-            "type": "scroll.horizonally",
-            "count": 1
-        },
-        "<C-U>": {
-            "type": "scroll.pages",
-            "count": -0.5
-        },
-        "<C-D>": {
-            "type": "scroll.pages",
-            "count": 0.5
-        },
-        "<C-B>": {
-            "type": "scroll.pages",
-            "count": -1
-        },
-        "<C-F>": {
-            "type": "scroll.pages",
-            "count": 1
-        },
-        "gg": {
-            "type": "scroll.top"
-        },
-        "G": {
-            "type": "scroll.bottom"
-        },
         "$": {
             "type": "scroll.end"
         },
-        "d": {
-            "type": "tabs.close"
+        "/": {
+            "type": "find.start"
         },
-        "gt": {
-            "type": "tabs.next"
-        },
-        "gT": {
-            "type": "tabs.prev"
+        "'": {
+            "type": "mark.jump.prefix"
         },
         "!d": {
             "type": "tabs.close.force"
         },
+        "[[": {
+            "type": "navigate.link.prev"
+        },
+        "]]": {
+            "type": "navigate.link.next"
+        },
+        "b": {
+            "type": "command.show.buffer"
+        },
+        "d": {
+            "type": "tabs.close"
+        },
+        "D": {
+            "type": "tabs.close.right"
+        },
+        "f": {
+            "type": "follow.start", "newTab": false
+        },
+        "F": {
+            "type": "follow.start", "newTab": true
+        },
+        "G": {
+            "type": "scroll.bottom"
+        },
+        "h": {
+            "type": "scroll.horizonally", "count": -1
+        },
+        "H": {
+            "type": "navigate.history.prev"
+        },
+        "j": {
+            "type": "scroll.vertically", "count": 1
+        },
+        "J": {
+            "type": "tabs.next", "count": 1
+        },
+        "k": {
+            "type": "scroll.vertically", "count": -1
+        },
+        "K": {
+            "type": "tabs.prev", "count": 1
+        },
+        "l": {
+            "type": "scroll.horizonally", "count": 1
+        },
+        "L": {
+            "type": "navigate.history.next"
+        },
+        "m": {
+            "type": "mark.set.prefix"
+        },
+        "n": {
+            "type": "find.next"
+        },
+        "N": {
+            "type": "find.prev"
+        },
+        "o": {
+            "type": "command.show.open", "alter": false
+        },
+        "O": {
+            "type": "command.show.open", "alter": true
+        },
+        "p": {
+            "type": "urls.paste", "newTab": false
+        },
+        "P": {
+            "type": "urls.paste", "newTab": true
+        },
+        "r": {
+            "type": "tabs.reload", "cache": false
+        },
+        "R": {
+            "type": "tabs.reload", "cache": true
+        },
+        "t": {
+            "type": "command.show.tabopen", "alter": false
+        },
+        "T": {
+            "type": "command.show.tabopen", "alter": true
+        },
         "u": {
             "type": "tabs.reopen"
         },
-        "K": {
-            "type": "tabs.prev",
-            "count": 1
+        "w": {
+            "type": "command.show.winopen", "alter": false
         },
-        "J": {
-            "type": "tabs.next",
-            "count": 1
+        "W": {
+            "type": "command.show.winopen", "alter": true
+        },
+        "y": {
+            "type": "urls.yank"
         },
         "g0": {
             "type": "tabs.first"
@@ -103,16 +119,29 @@
         "g$": {
             "type": "tabs.last"
         },
-        "<C-6>": {
-            "type": "tabs.prevsel"
+        "gg": {
+            "type": "scroll.top"
         },
-        "r": {
-            "type": "tabs.reload",
-            "cache": false
+        "gh": {
+            "type": "page.home"
         },
-        "R": {
-            "type": "tabs.reload",
-            "cache": true
+        "gH": {
+            "type": "page.home", "newTab": true
+        },
+        "gt": {
+            "type": "tabs.next"
+        },
+        "gT": {
+            "type": "tabs.prev"
+        },
+        "gu": {
+            "type": "navigate.parent"
+        },
+        "gU": {
+            "type": "navigate.root"
+        },
+        "gi": {
+            "type": "focus.input"
         },
         "zp": {
             "type": "tabs.pin.toggle"
@@ -129,66 +158,28 @@
         "zz": {
             "type": "zoom.neutral"
         },
-        "f": {
-            "type": "follow.start",
-            "newTab": false
-        },
-        "F": {
-            "type": "follow.start",
-            "newTab": true
-        },
-        "H": {
-            "type": "navigate.history.prev"
-        },
-        "L": {
-            "type": "navigate.history.next"
-        },
-        "[[": {
-            "type": "navigate.link.prev"
-        },
-        "]]": {
-            "type": "navigate.link.next"
-        },
-        "gu": {
-            "type": "navigate.parent"
-        },
-        "gU": {
-            "type": "navigate.root"
-        },
-        "gi": {
-            "type": "focus.input"
-        },
-        "y": {
-            "type": "urls.yank"
-        },
-        "p": {
-            "type": "urls.paste",
-            "newTab": false
-        },
-        "P": {
-            "type": "urls.paste",
-            "newTab": true
-        },
-        "/": {
-            "type": "find.start"
-        },
-        "n": {
-            "type": "find.next"
-        },
-        "N": {
-            "type": "find.prev"
-        },
         "<S-Esc>": {
             "type": "addon.toggle.enabled"
         },
-        "'": {
-            "type": "mark.jump.prefix"
+        "<C-6>": {
+            "type": "tabs.prevsel"
         },
-        "m": {
-            "type": "mark.set.prefix"
+        "<C-U>": {
+            "type": "scroll.pages", "count": -0.5
+        },
+        "<C-D>": {
+            "type": "scroll.pages", "count": 0.5
+        },
+        "<C-B>": {
+            "type": "scroll.pages", "count": -1
+        },
+        "<C-F>": {
+            "type": "scroll.pages", "count": 1
         }
+
     },
     "search": {
+
         "default": "google",
         "engines": {
             "google": "https://google.com/search?q={}",
@@ -201,12 +192,12 @@
     },
     "blacklist": [
         "mail.google.com",
-        "inbox.google.com*",
-        "localhost"
+        "inbox.google.com",
+        "jupyter.ad.edrev.net"
     ],
     "properties": {
         "hintchars": "abcdefghijklmnopqrstuvwxyz",
-        "smoothscroll": false,
-        "adjacenttab": true
+        "smoothscroll": false
     }
 }
+

@@ -11,11 +11,13 @@ set hlsearch                         " highlight searched (and found) text
 
 
 " kj exits insert mode
-:imap kj <ESC>
+imap kj <ESC>
 
 " KJ also exits insert mode
-:imap KJ <ESC>
+imap KJ <ESC>
 
+nnoremap <A-a> <C-a>
+nnoremap <A-x> <C-x>
 
 " replace current word with yanked text
 nnoremap S "_diwP
