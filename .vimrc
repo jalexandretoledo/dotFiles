@@ -83,6 +83,8 @@ Plugin 'PProvost/vim-ps1'
 " ===============================================================================
 Plugin 'fsharp/vim-fsharp'
 
+Plugin 'dansomething/vim-hackernews'
+
 " ===============================================================================
 " Gui Plugins
 " ===============================================================================
@@ -132,6 +134,10 @@ let g:netrw_banner = 0 " Turn off banner
 
 """ Explore in vertical split
 nnoremap <Leader>e :Explore! <enter>
+
+
+""" Reload current buffer (if not modified)
+nnoremap <Leader>r :e<CR>G
 
 
 " ===============================================================================
