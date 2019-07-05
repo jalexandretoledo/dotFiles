@@ -136,8 +136,6 @@ let g:netrw_banner = 0 " Turn off banner
 nnoremap <Leader>e :Explore! <enter>
 
 
-""" Reload current buffer (if not modified)
-nnoremap <Leader>r :e<CR>G
 
 
 " ===============================================================================
@@ -169,15 +167,18 @@ nnoremap <silent> <Leader>h mh:execute 'match Search /\%'.line('.').'l/'<CR>
 nnoremap <leader>d "_d
 
 " navigate between buffers
-nnoremap <leader>b :ls <enter>
-nnoremap gp :bp <enter>
-nnoremap gn :bn <enter>
+nnoremap ]b :ls <enter>
+nnoremap ]p :bp <enter>
+nnoremap ]n :bn <enter>
+
+""" Reload current buffer (if not modified)
+nnoremap ]r :e<CR>G
 
 " Last *viewed* buffer
-nnoremap gh :b#<CR>
+nnoremap ]v :b#<CR>
 
 " List then choose
-nnoremap gb :ls<CR>:b<Space>
+nnoremap ]b :ls<CR>:b<Space>
 
 
 " \f : fold da tag que inicia na linha atual (XML)
@@ -271,6 +272,9 @@ if has("win32")
   "
   nnoremap <A-a> <C-a> 
   nnoremap <A-x> <C-x>
+
+  " FINDSTR? No!
+  set grepprg=grep
 else
   command! -range -nargs=0 -bar JsonTool <line1>,<line2> !python3 -m json.tool
 endif
