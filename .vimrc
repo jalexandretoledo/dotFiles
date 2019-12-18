@@ -366,6 +366,12 @@ function! s:ilist_qf(start_at_cursor)
   cwindow
 endfunction
 
+function! Outline()
+    " My preferred outline mode
+    setlocal foldmethod=expr
+    setlocal foldexpr=getline(v\:lnum)=~'^\\s*$'?'0'\:'1'
+    " setlocal foldcolumn=2
+endfunction
 
 
 noremap <silent> <leader>I :call <sid>ilist_qf(0)<CR>
