@@ -1,7 +1,12 @@
-behave mswin                         " VS runs on MS Windows :)
+" behave mswin                         " VS runs on MS Windows :)
 
 set tabstop=4                        " tab stop
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+
 set number                           " show line numbers
+set relativenumber
 
 set cursorline                       " highlight current line
 
