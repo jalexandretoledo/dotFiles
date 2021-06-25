@@ -58,6 +58,8 @@ Plugin 'tpope/vim-apathy'
 
 Plugin 'ludovicchabant/vim-lawrencium'
 
+Plugin 'chrisbra/csv.vim'
+
 "" Plugin 'jalvesaq/Nvim-R'
 "" Plugin 'scrooloose/syntastic'
 "" Plugin 'sirver/ultisnips'

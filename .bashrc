@@ -96,3 +96,8 @@ fi
 
 # jat, 2019-01-19
 export EDITOR=$(which vim)
+
+# virtualenvwrapper options
+#  export WORKON_HOME=~/projects/venvs
+#  export VIRTUALENVWRAPPER_PYTHON=python3.7
+#  source ~/.local/bin/virtualenvwrapper.sh
