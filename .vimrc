@@ -5,97 +5,15 @@
 "
 "
 "
-
-" Adding runtimepath for windows so we can use .vim instead of _vim
 if !exists("g:loaded_runtime")
-  set runtimepath=~/.vim,$VIMRUNTIME,~/.vim/bundle,~/.vim/after
+  set packpath+=~/.vim
+  set runtimepath=~/.vim,$VIMRUNTIME
   let g:loaded_runtime = 1
 endif
-
 
 set nocompatible		" be iMproved, required
 filetype off			" required
 
-
-"
-" ===============================================================================
-"  Vundle
-" ===============================================================================
-"
-" JAT, 2017-06-15: Vundle plugings will be put under ~/.vim/bundle
-set rtp+=~/.vim/bundle/Vundle.vim/
-call vundle#begin('~/.vim/bundle/')
-
-" Keep Plugin commands between vundle#begin/end.
-Plugin 'VundleVim/Vundle.vim'	" let Vundle manage Vundle
-
-
-
-" ===============================================================================
-" 	Essential
-" ===============================================================================
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-sensible'
-
-
-
-" ===============================================================================
-" Not essential at all... But it's cuttie
-" ===============================================================================
-Plugin 'bling/vim-airline'
-
-
-" ===============================================================================
-""" Experimental
-" ===============================================================================
-""" General Functionality
-Plugin 'davidhalter/jedi-vim'
-Plugin 'lifepillar/vim-mucomplete'
-Plugin 'tmhedberg/SimpylFold'
-Plugin 'Konfekt/FastFold'
-Plugin 'nvie/vim-flake8'
-Plugin 'tpope/vim-apathy'
-
-Plugin 'ludovicchabant/vim-lawrencium'
-
-Plugin 'chrisbra/csv.vim'
-
-"" Plugin 'jalvesaq/Nvim-R'
-"" Plugin 'scrooloose/syntastic'
-"" Plugin 'sirver/ultisnips'
-"" Plugin 'honza/vim-snippets'
-"" Plugin 'tpope/vim-commentary'
-"" Plugin 'chiel92/vim-autoformat'
-
-Plugin 'jalexandretoledo/visSum.vim'
-
-Plugin 'jamessan/vim-gnupg'
-"" Plugin 'vim-scripts/gnupg.vim'
-
-"Plugin 'hoffstein/vim-tsql'
-Plugin 'vim-scripts/sqlserver.vim'
-
-" ===============================================================================
-" Powershell
-" ===============================================================================
-Plugin 'PProvost/vim-ps1'
-
-" ===============================================================================
-" FSharp
-" ===============================================================================
-Plugin 'fsharp/vim-fsharp'
-
-Plugin 'dansomething/vim-hackernews'
-
-" ===============================================================================
-" Gui Plugins
-" ===============================================================================
-if has("gui_running")
-  Plugin 'altercation/vim-colors-solarized.git'
-  Plugin 'elmindreda/vimcolors.git'
-endif
-
-call vundle#end()		" required
 filetype plugin indent on	" required
 
 " ===============================================================================
@@ -136,9 +54,6 @@ let g:netrw_banner = 0 " Turn off banner
 
 """ Explore in vertical split
 nnoremap <Leader>e :Explore! <enter>
-
-
-
 
 " ===============================================================================
 " Key mappings
@@ -186,7 +101,6 @@ nnoremap ]b :ls<CR>:b<Space>
 " \f : fold da tag que inicia na linha atual (XML)
 nnoremap <leader>f 0f<lmb*mf'bzf'fj
 
-
 " ===============================================================================
 " Visual
 " ===============================================================================
@@ -199,6 +113,10 @@ set background=dark
 syntax enable
 
 if has("gui_running")
+
+  packadd vim-colors-solarized.git
+  packadd vimcolors.git
+
   let g:solarized_italic=0
   colorscheme solarized
   " colorscheme phosphor
@@ -225,19 +143,6 @@ set rnu number			" relative line numbers
 set numberwidth=5		" line number alignment -> doesn't work with solarized
 set expandtab			" expand tabs into spaces
 
-
-
-
-
-" ===============================================================================
-" Python configuration
-" (see https://realpython.com/blog/python/vim-and-python-a-match-made-in-heaven/)
-" ===============================================================================
-" let g:ycm_autoclose_preview_window_after_completion=1
-" map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
-let python_highlight_all=1
-
-
 "
 " Utiliza o módulo json.tool do Python3 para formatar o range de linhas
 " informado. Cuidado! A versão do módulo distribuída com o Python2 muda
@@ -256,7 +161,7 @@ if has("win32")
 
   " Vim is still compiled to be run with Python 3.5...
   " However, this is not guaranteed to work
-  set pythonthreedll=python37.dll
+  " set pythonthreedll=python37.dll
 
   "
   " https://github.com/davidhalter/jedi-vim/issues/870
@@ -265,7 +170,7 @@ if has("win32")
   "
   " JsonTool
   "
-  command! -range -nargs=0 -bar JsonTool <line1>,<line2> !py -3 -m json.tool
+  command! -range -nargs=0 -bar JsonTool <line1>,<line2> !python -m json.tool
 
   " 
   " Increment/Decrement
@@ -297,19 +202,10 @@ catch
 endtry
 
 
-
-
 "" Autocompletion
 " required by MUcomplete
 set completeopt=menuone,noinsert,noselect
 set shortmess+=c " Turn off completion messages
-
-" inoremap <expr> <c-e> mucomplete#popup_exit("\<c-e>")
-" inoremap <expr> <c-y> mucomplete#popup_exit("\<c-y>")
-" inoremap <expr>  <cr> mucomplete#popup_exit("\<cr>")
-
-let g:mucomplete#enable_auto_at_startup = 0
-
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 
