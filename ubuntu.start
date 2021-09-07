@@ -1,0 +1,32 @@
+# install some basic software
+sudo apt install tmux git vim vim-gtk
+
+tmux
+
+# create a new key
+ssh-keygen -t ed25519 -a 100
+vim ~/.ssh/id_ed25519.pub 
+
+# prepare the environment
+mkdir ~/projects
+cd ~/projects/
+git clone git@github.com:jalexandretoledo/pessoal_hg.git
+git clone git@github.com:jalexandretoledo/dotFiles
+
+cd ~
+rm .bashrc
+ln -s ~/projects/dotFiles/.bashrc 
+ln -s ~/projects/dotFiles/.bash_aliases 
+
+ln -s ~/projects/dotFiles/.tmux.conf 
+
+ln -s ~/projects/dotFiles/.vimrc
+ln -s ~/projects/dotFiles/.gvimrc 
+
+ln -s ~/projects/dotFiles/.gitignore 
+
+# configure vim
+mkdir ~/.vim
+mkdir ~/.vim/bundle
+cd ~/.vim/bundle/
+git clone https://github.com/VundleVim/Vundle.vim

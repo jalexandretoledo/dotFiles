@@ -97,6 +97,12 @@ fi
 # jat, 2019-01-19
 export EDITOR=$(which vim)
 
+# jat, 2020-08-18
+if [ -f ~/.bash_paths.local ]; then
+    . ~/.bash_paths.local
+fi
+
+
 # virtualenvwrapper options
 #  export WORKON_HOME=~/projects/venvs
 #  export VIRTUALENVWRAPPER_PYTHON=python3.7
