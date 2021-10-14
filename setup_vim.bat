@@ -10,6 +10,7 @@ git submodule add https://github.com/bling/vim-airline                plugins/st
 git submodule add https://github.com/chrisbra/csv.vim                 plugins/start/csv.vim
 git submodule add https://github.com/jalexandretoledo/visSum.vim      plugins/start/visSum.vim
 git submodule add https://github.com/jamessan/vim-gnupg               plugins/start/vim-gnupg
+git submodule add https://github.com/neoclide/coc.nvim                plugins/start/coc.nvim
 
 :: opcionais
 git submodule add https://github.com/altercation/vim-colors-solarized.git       plugins/opt/vim-colors-solarized.git
