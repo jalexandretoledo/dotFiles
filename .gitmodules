@@ -1,0 +1,27 @@
+[submodule "vim/pack/plugins/start/vim-surround"]
+	path = vim/pack/plugins/start/vim-surround
+	url = https://github.com/tpope/vim-surround
+[submodule "vim/pack/plugins/start/vim-sensible"]
+	path = vim/pack/plugins/start/vim-sensible
+	url = https://github.com/tpope/vim-sensible
+[submodule "vim/pack/plugins/start/vim-airline"]
+	path = vim/pack/plugins/start/vim-airline
+	url = https://github.com/bling/vim-airline
+[submodule "vim/pack/plugins/start/csv.vim"]
+	path = vim/pack/plugins/start/csv.vim
+	url = https://github.com/chrisbra/csv.vim
+[submodule "vim/pack/plugins/start/visSum.vim"]
+	path = vim/pack/plugins/start/visSum.vim
+	url = https://github.com/jalexandretoledo/visSum.vim
+[submodule "vim/pack/plugins/start/vim-gnupg"]
+	path = vim/pack/plugins/start/vim-gnupg
+	url = https://github.com/jamessan/vim-gnupg
+[submodule "vim/pack/plugins/opt/coc.nvim"]
+	path = vim/pack/plugins/opt/coc.nvim
+	url = https://github.com/neoclide/coc.nvim
+[submodule "vim/pack/plugins/opt/vimcolors.git"]
+	path = vim/pack/plugins/opt/vimcolors.git
+	url = https://github.com/elmindreda/vimcolors.git
+[submodule "vim/pack/plugins/opt/vim-colors-solarized.git"]
+	path = vim/pack/plugins/opt/vim-colors-solarized.git
+	url = https://github.com/altercation/vim-colors-solarized.git
