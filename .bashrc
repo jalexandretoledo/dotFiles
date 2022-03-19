@@ -57,7 +57,8 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+    # PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\][\A \#] \u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
@@ -103,7 +104,26 @@ if [ -f ~/.bash_paths.local ]; then
 fi
 
 
+#
+# Config dir
+#
+export XDG_CONFIG_HOME=$(xdg-user-dir CONFIG)
+
+#
+# nvm: node version manager
+# 
+export NVM_DIR=${XDG_CONFIG_HOME}/nvm
+source ${NVM_DIR}/nvm.sh
+source ${NVM_DIR}/bash_completion
+nvm use node
+
+#
+# yarn
+#
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
 # virtualenvwrapper options
 #  export WORKON_HOME=~/projects/venvs
 #  export VIRTUALENVWRAPPER_PYTHON=python3.7
 #  source ~/.local/bin/virtualenvwrapper.sh
+
