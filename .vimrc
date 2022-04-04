@@ -14,6 +14,8 @@ endif
 set nocompatible		" be iMproved, required
 filetype plugin indent on
 
+packadd coc.nvim
+
 " ===============================================================================
 " Some experiments
 " ===============================================================================
