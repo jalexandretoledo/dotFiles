@@ -127,3 +127,4 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 #  export VIRTUALENVWRAPPER_PYTHON=python3.7
 #  source ~/.local/bin/virtualenvwrapper.sh
 
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

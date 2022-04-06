@@ -215,6 +215,8 @@ else
   set signcolumn=yes
 endif
 
+packadd coc.nvim
+
 if exists('g:did_coc_loaded')
     " Comandos que dependem do coc-nvim devem ficar aqui;
     " caso contrário, acaba impactando também o VSVIM
