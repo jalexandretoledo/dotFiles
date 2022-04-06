@@ -100,6 +100,8 @@ nnoremap ]v :b#<CR>
 " List then choose
 nnoremap ]b :ls<CR>:b<Space>
 
+" reselect pasted text
+nnoremap gp `[v`]
 
 " \f : fold da tag que inicia na linha atual (XML)
 nnoremap <leader>f 0f<lmb*mf'bzf'fj
