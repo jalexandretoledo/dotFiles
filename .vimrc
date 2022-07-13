@@ -100,6 +100,8 @@ nnoremap ]v :b#<CR>
 " List then choose
 nnoremap ]b :ls<CR>:b<Space>
 
+" reselect pasted text
+nnoremap gp `[v`]
 
 " \f : fold da tag que inicia na linha atual (XML)
 nnoremap <leader>f 0f<lmb*mf'bzf'fj
@@ -216,6 +218,8 @@ if has("nvim-0.5.0") || has("patch-8.1.1564")
 else
   set signcolumn=yes
 endif
+
+packadd coc.nvim
 
 if exists('g:did_coc_loaded')
     " Comandos que dependem do coc-nvim devem ficar aqui;
