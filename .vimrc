@@ -37,6 +37,7 @@ set smartcase " don't ignore capitals in searches
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
+set shiftround
 set expandtab
 
 set encoding=utf-8		" encoding :)

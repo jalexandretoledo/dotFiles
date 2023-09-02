@@ -1,0 +1,96 @@
+"
+"
+"	João Alexandre de Toledo
+"	https://github.com/jalexandretoledo/
+"
+"
+"
+
+"" Text Wrapping
+set textwidth=79
+set colorcolumn=80
+set nowrap
+"
+"" Search and Substitute
+"" set gdefault " use global flag by default in s: commands
+set hlsearch " highlight searches
+set ignorecase 
+set smartcase " don't ignore capitals in searches
+
+"" Tabs
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set shiftround
+set expandtab
+
+set encoding=utf-8		" encoding :)
+
+set belloff=all         " desativa avisos sonoros
+
+
+
+" ===============================================================================
+" Key mappings
+" ===============================================================================
+
+" kj and KJ exit insert mode
+inoremap kj <ESC>			
+inoremap KJ <ESC>			
+
+" replace current word with yanked text, discard current word
+nnoremap S "_diwP
+
+" replace current word with yanked text, yank current word
+nnoremap X diw"0P
+
+" \l   (\ + lower L)
+nnoremap <leader>l :match<cr>:nohlsearch<cr>:diffupdate<cr>:syntax sync fromstart<cr><c-l>
+
+" Source: http://vim.wikia.com/wiki/Highlight_current_line
+" Highlight the current line and keep it highlighted after the cursor is
+" moved; it also sets mark h so you can type 'h to come back to the line;
+" enter :match to clear the highlighting
+"
+nnoremap <silent> <Leader>h mh:execute 'match Search /\%'.line('.').'l/'<CR>
+
+" \d    delete to the black hole register
+" source: https://www.reddit.com/r/vim/comments/6fujzj/easier_access_to_the_black_hole_register/dil4kro/
+nnoremap <leader>d "_d
+
+" navigate between buffers
+nnoremap ]b :ls <enter>
+nnoremap ]p :bp <enter>
+nnoremap ]n :bn <enter>
+nnoremap ]d :bp\|bd# <enter>
+nnoremap ]c :bd % <enter>
+
+""" Reload current buffer (if not modified)
+nnoremap ]r :e<CR>G
+
+" Last *viewed* buffer
+nnoremap ]v :b#<CR>
+
+" List then choose
+nnoremap ]b :ls<CR>:b<Space>
+
+" reselect pasted text
+nnoremap gp `[v`]
+
+" \f : fold da tag que inicia na linha atual (XML)
+nnoremap <leader>f 0f<lmb*mf'bzf'fj
+
+" ===============================================================================
+" Visual
+" ===============================================================================
+
+
+set rnu number			" relative line numbers
+set numberwidth=5		" line number alignment -> doesn't work with solarized
+set expandtab			" expand tabs into spaces
+
+" I've never needed this backup... after all, we user versioning system for that :)
+set nobackup
+set nowritebackup
+set noswapfile
+
