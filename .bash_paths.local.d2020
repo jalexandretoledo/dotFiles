@@ -1,0 +1,12 @@
+#! /bin/bash
+
+echo Configurando paths específicos de d2020...
+
+export PATH=$PATH$:~/.local.bin
+
+
+# jtoledo, 2023-09-25: instalação do dotnet
+# export DOTNET_ROOT=$HOME/dotnet
+# export PATH=$PATH:$HOME/dotnet
+# -- adicionados em /etc/environment
+
