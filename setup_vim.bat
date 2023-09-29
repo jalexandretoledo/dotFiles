@@ -15,3 +15,5 @@ git submodule add https://github.com/neoclide/coc.nvim                plugins/st
 :: opcionais
 git submodule add https://github.com/altercation/vim-colors-solarized.git       plugins/opt/vim-colors-solarized.git
 git submodule add https://github.com/elmindreda/vimcolors.git                   plugins/opt/vimcolors.git
+git submodule add https://github.com/nordtheme/vim                              plugins/opt/nordtheme
+

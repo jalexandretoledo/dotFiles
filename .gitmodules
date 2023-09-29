@@ -25,3 +25,6 @@
 [submodule "vim/pack/plugins/opt/vim-colors-solarized.git"]
 	path = vim/pack/plugins/opt/vim-colors-solarized.git
 	url = https://github.com/altercation/vim-colors-solarized.git
+[submodule "vim/pack/plugins/opt/nordtheme"]
+	path = vim/pack/plugins/opt/nordtheme
+	url = https://github.com/nordtheme/vim

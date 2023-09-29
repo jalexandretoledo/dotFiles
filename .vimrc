@@ -113,18 +113,20 @@ nnoremap <leader>f 0f<lmb*mf'bzf'fj
 
 
 " Configura solarized
-color darkblue			" it could also be 'color desert'
-set background=dark
+" color darkblue			" it could also be 'color desert'
+" set background=dark
+packadd nordtheme git
+colorscheme nord
 
 syntax enable
 
 if has("gui_running")
 
-  packadd vim-colors-solarized.git
-  packadd vimcolors.git
+  " packadd vim-colors-solarized.git
+  " packadd vimcolors.git
 
-  let g:solarized_italic=0
-  colorscheme solarized
+  " let g:solarized_italic=0
+  " colorscheme solarized
   " colorscheme phosphor
   " colorscheme elmindreda
 
