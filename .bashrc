@@ -104,7 +104,6 @@ if [ -f ~/.bash_paths.local ]; then
     . ~/.bash_paths.local
 fi
 
-
 #
 # Config dir
 #
@@ -129,3 +128,11 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 #  source ~/.local/bin/virtualenvwrapper.sh
 
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
+# jat, 2023-10-07
+# If not running interactively, do not do anything
+[[ $- != *i* ]] && return
+# Otherwise start tmux
+[[ -z "$TMUX" ]] && exec tmux
+
