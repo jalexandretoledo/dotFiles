@@ -44,6 +44,9 @@ set encoding=utf-8		" encoding :)
 
 set belloff=all         " desativa avisos sonoros
 
+" 2023-04-05
+set smartindent
+
 " ===============================================================================
 " NetRW
 " ===============================================================================
@@ -428,3 +431,20 @@ endfunction
 
 noremap <silent> <leader>I :call <sid>ilist_qf(0)<CR>
 " noremap <silent> ]I :call <sid>ilist_qf(1)<CR>
+
+"
+" https://vim.fandom.com/wiki/Insert-mode_only_Caps_Lock
+"
+" Insert and command-line mode Caps Lock.
+" Lock search keymap to be the same as insert mode.
+set imsearch=-1
+
+" Load the keymap that acts like capslock.
+set keymap=insert-only_capslock
+
+" Turn it off by default.
+set iminsert=0
+
+
+highlight Cursor guifg=NONE guibg=Green
+highlight lCursor guifg=NONE guibg=Cyan
