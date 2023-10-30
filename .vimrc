@@ -445,6 +445,9 @@ set keymap=insert-only_capslock
 " Turn it off by default.
 set iminsert=0
 
-
+" Cursor changes when CAPSLOCK is on
 highlight Cursor guifg=NONE guibg=Green
 highlight lCursor guifg=NONE guibg=Cyan
+
+" Kill the capslock when leaving insert mode.
+autocmd InsertLeave * set iminsert=0
