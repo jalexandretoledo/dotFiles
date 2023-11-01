@@ -12,7 +12,8 @@ set cursorline                       " highlight current line
 
 set incsearch                        " incremental search
 set hlsearch                         " highlight searched (and found) text
-
+set ignorecase
+set smartcase
 
 
 " kj exits insert mode

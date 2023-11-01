@@ -1,7 +1,8 @@
 if has("gui_gtk2")
     set guifont=Ubuntu\ Mono\ 15
 elseif has("gui_win32")
-    set guifont=Consolas:h11:cDEFAULT
+    " set guifont=Consolas:h11:cDEFAULT
+    set guifont=Cascadia\ Mono:h11:cDEFAULT
 elseif has("gui_macvim")
     set guifont=Menlo\ Regular:h14
 endif
