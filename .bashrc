@@ -94,41 +94,8 @@ if ! shopt -oq posix; then
   fi
 fi
 
-
-
-# jat, 2019-01-19
-export EDITOR=$(which vim)
-
-# jat, 2020-08-18
-if [ -f ~/.bash_paths.local ]; then
-    . ~/.bash_paths.local
-fi
-
-#
-# Config dir
-#
-export XDG_CONFIG_HOME=$(xdg-user-dir CONFIG)
-
-#
-# nvm: node version manager
-# 
-export NVM_DIR=${XDG_CONFIG_HOME}/nvm
-source ${NVM_DIR}/nvm.sh
-source ${NVM_DIR}/bash_completion
-nvm use node
-
-#
-# yarn
-#
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-
-# virtualenvwrapper options
-#  export WORKON_HOME=~/projects/venvs
-#  export VIRTUALENVWRAPPER_PYTHON=python3.7
-#  source ~/.local/bin/virtualenvwrapper.sh
-
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
+# This loads nvm bash_completion
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 # jat, 2023-10-07
 # If not running interactively, do not do anything
