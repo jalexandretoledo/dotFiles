@@ -27,7 +27,37 @@ if [ -d "$HOME/.local/bin" ] ; then
 fi
 
 # set PATH so it includes user's private bin if it exists
+# what is defined here is also available for applications started from
+# GNOME menus, and not only for applications started from the command line
 if [ -d "$HOME/dotnet" ] ; then
     DOTNET_ROOT=$HOME/dotnet
     PATH="$PATH:$HOME/dotnet"
+fi
+
+# jat, 2019-01-19
+export EDITOR=$(which vim)
+
+# jat, 2020-08-18
+if [ -f ~/.bash_paths.local ]; then
+    . ~/.bash_paths.local
+fi
+
+#
+# Config dir
+#
+export XDG_CONFIG_HOME=$(xdg-user-dir CONFIG)
+
+#
+# nvm: node version manager
+# 
+if [ -d "${XDG_CONFIG_HOME}/nvm" ] ; then
+    export NVM_DIR=${XDG_CONFIG_HOME}/nvm
+    source ${NVM_DIR}/nvm.sh
+    source ${NVM_DIR}/bash_completion
+    nvm use node
+
+    #
+    # yarn
+    #
+    export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 fi
