@@ -44,6 +44,9 @@ set encoding=utf-8		" encoding :)
 
 set belloff=all         " desativa avisos sonoros
 
+" 2023-04-05
+set smartindent
+
 " ===============================================================================
 " NetRW
 " ===============================================================================
@@ -229,16 +232,24 @@ if exists('g:did_coc_loaded')
     " caso contrário, acaba impactando também o VSVIM
 
     "" {{{coc-nvim config
-    " Use tab for trigger completion with characters ahead and navigate.
-    " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+    
+    " Use tab for trigger completion with characters ahead and navigate
+    " NOTE: There's always complete item selected by default, you may want to enable
+    " no select by `"suggest.noselect": true` in your configuration file
+    " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+    " other plugin before putting this into your config
     inoremap <silent><expr> <TAB>
-          \ pumvisible() ? "\<C-n>" :
-          \ <SID>check_back_space() ? "\<TAB>" :
+          \ coc#pum#visible() ? coc#pum#next(1) :
+          \ CheckBackspace() ? "\<Tab>" :
           \ coc#refresh()
-    inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-    " Used in the tab autocompletion for coc
-    function! s:check_back_space() abort
+    inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+    
+    " Make <CR> to accept selected completion item or notify coc.nvim to format
+    " <C-g>u breaks current undo, please make your own choice
+    inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                                  \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+    
+    function! CheckBackspace() abort
       let col = col('.') - 1
       return !col || getline('.')[col - 1]  =~# '\s'
     endfunction
@@ -249,11 +260,6 @@ if exists('g:did_coc_loaded')
     else
       inoremap <silent><expr> <c-@> coc#refresh()
     endif
-
-    " Make <CR> auto-select the first completion item and notify coc.nvim to
-    " format on enter, <cr> could be remapped by other vim plugin
-    inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-                                  \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
     " Use `[g` and `]g` to navigate diagnostics
     nmap <silent> [g <Plug>(coc-diagnostic-prev)
@@ -269,15 +275,13 @@ if exists('g:did_coc_loaded')
     nmap <Leader>ws <Plug>(coc-metals-expand-decoration)
 
     " Use K to either doHover or show documentation in preview window
-    nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-    function! s:show_documentation()
-      if (index(['vim','help'], &filetype) >= 0)
-        execute 'h '.expand('<cword>')
-      elseif (coc#rpc#ready())
+    nnoremap <silent> K :call ShowDocumentation()<CR>
+    
+    function! ShowDocumentation()
+      if CocAction('hasProvider', 'hover')
         call CocActionAsync('doHover')
       else
-        execute '!' . &keywordprg . " " . expand('<cword>')
+        call feedkeys('K', 'in')
       endif
     endfunction
 
@@ -287,76 +291,95 @@ if exists('g:did_coc_loaded')
     " Remap for rename current word
     nmap <leader>rn <Plug>(coc-rename)
 
+    " Formatting selected code
+    xmap <leader>f  <Plug>(coc-format-selected)
+    nmap <leader>f  <Plug>(coc-format-selected)
+
     augroup mygroup
       autocmd!
+      " Setup formatexpr specified filetype(s)
+      autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')      
       " Update signature help on jump placeholder
       autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
     augroup end
 
-    " Applying codeAction to the selected region.
+    " Applying code actions to the selected code block
     " Example: `<leader>aap` for current paragraph
     xmap <leader>a  <Plug>(coc-codeaction-selected)
     nmap <leader>a  <Plug>(coc-codeaction-selected)
-
-    " Remap keys for applying codeAction to the current buffer.
-    nmap <leader>ac  <Plug>(coc-codeaction)
-    " Apply AutoFix to problem on the current line.
+    
+    " Remap keys for applying code actions at the cursor position
+    nmap <leader>ac  <Plug>(coc-codeaction-cursor)
+    " Remap keys for apply code actions affect whole buffer
+    nmap <leader>as  <Plug>(coc-codeaction-source)
+    " Apply the most preferred quickfix action to fix diagnostic on the current line
     nmap <leader>qf  <Plug>(coc-fix-current)
+    
+    " Remap keys for applying refactor code actions
+    nmap <silent> <leader>re <Plug>(coc-codeaction-refactor)
+    xmap <silent> <leader>r  <Plug>(coc-codeaction-refactor-selected)
+    nmap <silent> <leader>r  <Plug>(coc-codeaction-refactor-selected)
+    
+    " Run the Code Lens action on the current line
+    nmap <leader>cl  <Plug>(coc-codelens-action)
 
-    " Use `:Format` to format current buffer
-    command! -nargs=0 Format :call CocAction('format')
-
-    " Use `:Fold` to fold current buffer
+    " Map function and class text objects
+    " NOTE: Requires 'textDocument.documentSymbol' support from the language server
+    xmap if <Plug>(coc-funcobj-i)
+    omap if <Plug>(coc-funcobj-i)
+    xmap af <Plug>(coc-funcobj-a)
+    omap af <Plug>(coc-funcobj-a)
+    xmap ic <Plug>(coc-classobj-i)
+    omap ic <Plug>(coc-classobj-i)
+    xmap ac <Plug>(coc-classobj-a)
+    omap ac <Plug>(coc-classobj-a)
+    
+    " Remap <C-f> and <C-b> to scroll float windows/popups
+    if has('nvim-0.4.0') || has('patch-8.2.0750')
+      nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+      nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+      inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+      inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+      vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+      vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+    endif
+    
+    " Use CTRL-S for selections ranges
+    " Requires 'textDocument/selectionRange' support of language server
+    nmap <silent> <C-s> <Plug>(coc-range-select)
+    xmap <silent> <C-s> <Plug>(coc-range-select)
+    
+    " Add `:Format` command to format current buffer
+    command! -nargs=0 Format :call CocActionAsync('format')
+    
+    " Add `:Fold` command to fold current buffer
     command! -nargs=? Fold :call     CocAction('fold', <f-args>)
-
-    " Trigger for code actions
-    " Make sure `"codeLens.enable": true` is set in your coc config
-    nnoremap <leader>cl :<C-u>call CocActionAsync('codeLensAction')<CR>
-
+    
+    " Add `:OR` command for organize imports of the current buffer
+    command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.organizeImport')
+    
+    " Add (Neo)Vim's native statusline support
+    " NOTE: Please see `:h coc-status` for integrations with external plugins that
+    " provide custom statusline: lightline.vim, vim-airline
+    set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+    
     " Mappings for CoCList
-    " Show all diagnostics.
+    " Show all diagnostics
     nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
-    " Manage extensions.
+    " Manage extensions
     nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
-    " Show commands.
+    " Show commands
     nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
-    " Find symbol of current document.
+    " Find symbol of current document
     nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
-    " Search workspace symbols.
+    " Search workspace symbols
     nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
-    " Do default action for next item.
+    " Do default action for next item
     nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
-    " Do default action for previous item.
+    " Do default action for previous item
     nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
-    " Resume latest coc list.
-    nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
-
-    " Notify coc.nvim that <enter> has been pressed.
-    " Currently used for the formatOnType feature.
-    inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-          \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
-    " Toggle panel with Tree Views
-    nnoremap <silent> <space>t :<C-u>CocCommand metals.tvp<CR>
-    " Toggle Tree View 'metalsPackages'
-    nnoremap <silent> <space>tp :<C-u>CocCommand metals.tvp metalsPackages<CR>
-    " Toggle Tree View 'metalsCompile'
-    nnoremap <silent> <space>tc :<C-u>CocCommand metals.tvp metalsCompile<CR>
-    " Toggle Tree View 'metalsBuild'
-    nnoremap <silent> <space>tb :<C-u>CocCommand metals.tvp metalsBuild<CR>
-    " Reveal current current class (trait or object) in Tree View 'metalsPackages'
-    nnoremap <silent> <space>tf :<C-u>CocCommand metals.revealInTreeView metalsPackages<CR>
-
-    augroup mygroup
-      autocmd!
-      " Update signature help on jump placeholder
-      autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-    augroup end
-
-    "" Scala
-
-    " Help Vim recognize *.sbt and *.sc as Scala files
-    au BufRead,BufNewFile *.sbt,*.sc set filetype=scala
+    " Resume latest coc list
+    nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>    
 
     "coc-nvin config }}}
 endif
@@ -428,3 +451,23 @@ endfunction
 
 noremap <silent> <leader>I :call <sid>ilist_qf(0)<CR>
 " noremap <silent> ]I :call <sid>ilist_qf(1)<CR>
+
+"
+" https://vim.fandom.com/wiki/Insert-mode_only_Caps_Lock
+"
+" Insert and command-line mode Caps Lock.
+" Lock search keymap to be the same as insert mode.
+set imsearch=-1
+
+" Load the keymap that acts like capslock.
+set keymap=insert-only_capslock
+
+" Turn it off by default.
+set iminsert=0
+
+" Cursor changes when CAPSLOCK is on
+highlight Cursor guifg=NONE guibg=Green
+highlight lCursor guifg=NONE guibg=Cyan
+
+" Kill the capslock when leaving insert mode.
+autocmd InsertLeave * set iminsert=0

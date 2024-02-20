@@ -12,8 +12,8 @@ set cursorline                       " highlight current line
 
 set incsearch                        " incremental search
 set hlsearch                         " highlight searched (and found) text
-
-
+set ignorecase
+set smartcase
 
 " kj exits insert mode
 imap kj <ESC>
@@ -33,3 +33,14 @@ nnoremap X diw"0P
 
 " \+L
 nnoremap <leader>l :nohlsearch<cr><c-l>
+"
+" \d    delete to the black hole register
+" source: https://www.reddit.com/r/vim/comments/6fujzj/easier_access_to_the_black_hole_register/dil4kro/
+nnoremap <leader>d "_d
+
+" reselect pasted text
+nnoremap gp `[v`]
+
+" \f : fold da tag que inicia na linha atual (XML)
+nnoremap <leader>f 0f<lmb*mf'bzf'fj
+
