@@ -2,7 +2,8 @@
 
 echo Configurando paths específicos de d2020...
 
-export PATH=$PATH$:~/.local.bin
+# essa pasta nem sequer existe!
+# export PATH=$PATH$:~/.local.bin
 
 
 # jtoledo, 2023-09-25: instalação do dotnet
