@@ -14,6 +14,7 @@ set nowrap
 "" Search and Substitute
 "" set gdefault " use global flag by default in s: commands
 set hlsearch " highlight searches
+set incsearch
 set ignorecase 
 set smartcase " don't ignore capitals in searches
 
@@ -38,6 +39,7 @@ set which-key
 set ideajoin
 set commentary
 set surround
+set ideamarks
 
 
 
@@ -253,5 +255,64 @@ map <c-\>s <Action>(RiderUnitTestFocusExplorerAction)
 map <c-\>f <Action>(RiderUnitTestSessionRerunFailedTestsAction)
 
 map <c-\>r <Action>(RenameElement)
+map <c-\>m <Action>(ExtractMethod)
+map <c-\>q <Action>(Refactorings.QuickListPopupAction)
 
-map <c-\>v <Action(SelectIn)
+map <c-\>e <Action>(ActivateProblemsViewToolWindow)
+
+map <c-\>v <Action>(SelectIn)
+
+map <leader>zA :action CollapseAllRegions<CR>
+map <leader>zR :action ExpandAllRegions<CR>
+
+" Display options
+map <leader>dd <action>(ToggleDistractionFreeMode)
+map <leader>dz <action>(ToggleZenMode)
+map <leader>df <action>(ToggleFullScreen)
+
+" Errors
+map <leader>en <Action>(ReSharperGotoNextErrorInSolution)
+map <leader>ep <Action>(ReSharperGotoPrevErrorInSolution)
+
+" Toggle case and start typing. E.g. `<leader>iget`: `property` -> `getProperty`
+nmap <leader>i ~hi
+" Remove selection and toggle case. E.g. `v2l<leader>u`: `getProperty` -> `property`
+vmap <leader>u d~h
+
+
+""" IdeaVim actions
+nmap [[ <Action>(MethodUp)
+nmap ]] <Action>(MethodDown)
+
+nmap ]e <Action>(GotoNextError)
+nmap [e <Action>(GotoPreviousError)
+
+
+
+
+""" Debugging
+map <leader>dt <Action>(ToggleLineBreakpoint)
+let g:WhichKeyDesc_debugging_toggle_breakpoint = "<leader>dt Toggle Break Point"
+
+map <leader>ds <Action>(PhpListenDebugAction)
+let g:WhichKeyDesc_debugging_listen = "<leader>ds Start Listening"
+
+map <leader>do <Action>(StepOver)
+let g:WhichKeyDesc_debugging_step_over = "<leader>do Step Over"
+
+map <leader>di <Action>(StepInto)
+let g:WhichKeyDesc_debugging_step_into = "<leader>di Step Into"
+
+map <leader>dr <Action>(EvaluateExpression)
+let g:WhichKeyDesc_debugging_repl = "<leader>dr Repl (Evaluate)"
+
+map <leader>dC <Action>(RunToCursor)
+let g:WhichKeyDesc_debugging_run_to_cursor = "<leader>dC Run To Cursor"
+
+map <leader>dc <Action>(Resume)
+let g:WhichKeyDesc_debugging_resume = "<leader>dc Resume"
+
+map <leader>gi <Action>(ReSharperGotoImplementation)
+
+map <leader>gc <Action>(RiderShowIncomingCalls)
+map <leader>w <Action>(HideAllWindows)
