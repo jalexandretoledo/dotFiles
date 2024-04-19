@@ -2,7 +2,7 @@
 
 echo Configurando paths específicos de d2021...
 
-export PATH=$PATH$:~/.local.bin
+export PATH=$PATH:~/.local.bin
 
 
 # jtoledo, 2023-09-25: instalação do dotnet
@@ -10,3 +10,4 @@ export PATH=$PATH$:~/.local.bin
 # export PATH=$PATH:$HOME/dotnet
 # -- adicionados em /etc/environment
 
+export _RUN_ORDER_=${_RUN_ORDER_}:.bash_paths.local.d2021

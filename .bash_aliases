@@ -33,4 +33,4 @@ if [ -n ${verif} ]; then
 fi
 unset verif
 
-
+export _RUN_ORDER_=${_RUN_ORDER_}:.bash_aliases

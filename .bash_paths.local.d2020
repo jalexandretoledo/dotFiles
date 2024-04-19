@@ -11,3 +11,5 @@ echo Configurando paths específicos de d2020...
 # export PATH=$PATH:$HOME/dotnet
 # -- adicionados em /etc/environment
 
+
+export _RUN_ORDER_=${_RUN_ORDER_}:.bash_paths.local.d2020"

@@ -94,8 +94,11 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# This loads nvm bash_completion
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+# isto já é executado no .profile
+## This loads nvm bash_completion
+## [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
+export _RUN_ORDER_=${_RUN_ORDER_}:.bashrc
 
 # jat, 2023-10-07
 # If not running interactively, do not do anything

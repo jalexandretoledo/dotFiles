@@ -8,6 +8,8 @@
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
 
+export _RUN_ORDER_=${_RUN_ORDER_}:.profile
+
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
     # include .bashrc if it exists
@@ -30,8 +32,8 @@ fi
 # what is defined here is also available for applications started from
 # GNOME menus, and not only for applications started from the command line
 if [ -d "$HOME/dotnet" ] ; then
-    DOTNET_ROOT=$HOME/dotnet
-    PATH="$PATH:$HOME/dotnet"
+    export DOTNET_ROOT=$HOME/dotnet
+    export PATH="$PATH:$HOME/dotnet"
 fi
 
 # jat, 2019-01-19
