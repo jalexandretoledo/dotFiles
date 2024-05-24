@@ -104,6 +104,9 @@ nnoremap ]v :b#<CR>
 " List then choose
 nnoremap ]b :ls<CR>:b<Space>
 
+" View current buffer in a new tab
+nnoremap ]t <C-W>T
+
 " reselect pasted text
 nnoremap gp `[v`]
 
