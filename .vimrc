@@ -451,6 +451,15 @@ function! Outline()
     " setlocal foldcolumn=2
 endfunction
 
+function! Scratch()
+    vsplit
+    noswapfile hide enew
+    setlocal buftype=nofile
+    setlocal bufhidden=hide
+    "setlocal nobuflisted
+    lcd ~
+    file scratch
+endfunction
 
 noremap <silent> <leader>I :call <sid>ilist_qf(0)<CR>
 " noremap <silent> ]I :call <sid>ilist_qf(1)<CR>
