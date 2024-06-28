@@ -456,6 +456,7 @@ function! Scratch()
     noswapfile hide enew
     setlocal buftype=nofile
     setlocal bufhidden=hide
+    setlocal textwidth=0
     "setlocal nobuflisted
     lcd ~
     file scratch
