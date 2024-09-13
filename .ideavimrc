@@ -262,6 +262,9 @@ map <c-\>e <Action>(ActivateProblemsViewToolWindow)
 
 map <c-\>v <Action>(SelectIn)
 
+map <c-\>o <Action>(RiderFileOpenGroup)
+map <c-\>z <Action>(GotoAction)
+
 map <leader>zA :action CollapseAllRegions<CR>
 map <leader>zR :action ExpandAllRegions<CR>
 
