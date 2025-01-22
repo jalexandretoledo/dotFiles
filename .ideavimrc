@@ -7,8 +7,8 @@
 "
 
 "" Text Wrapping
-set textwidth=79
-set colorcolumn=80
+set textwidth=100
+" set colorcolumn=80
 set nowrap
 "
 "" Search and Substitute
@@ -253,6 +253,7 @@ set noswapfile
 map <c-\>a <Action>(RiderUnitTestRunSolutionAction)
 map <c-\>s <Action>(RiderUnitTestFocusExplorerAction)
 map <c-\>f <Action>(RiderUnitTestSessionRerunFailedTestsAction)
+map <c-\>c <Action>(RiderUnitTestRunContextAction)
 
 map <c-\>r <Action>(RenameElement)
 map <c-\>m <Action>(ExtractMethod)
