@@ -243,28 +243,28 @@ set noswapfile
 
 
 " =============================================================================
-" Mostra "actions" da IDE executados para que possam ser mapeados
-" =============================================================================
-" set trackactionids
-
-" =============================================================================
 " jtoledo, 2024-02-20
 " =============================================================================
-map <c-\>a <Action>(RiderUnitTestRunSolutionAction)
-map <c-\>s <Action>(RiderUnitTestFocusExplorerAction)
-map <c-\>f <Action>(RiderUnitTestSessionRerunFailedTestsAction)
-map <c-\>c <Action>(RiderUnitTestRunContextAction)
+map <leader>a <Action>(RiderUnitTestRunSolutionAction)
+map <leader>s <Action>(RiderUnitTestFocusExplorerAction)
+map <leader>f <Action>(RiderUnitTestSessionRerunFailedTestsAction)
+map <leader>c <Action>(RiderUnitTestRunContextAction)
 
-map <c-\>r <Action>(RenameElement)
-map <c-\>m <Action>(ExtractMethod)
-map <c-\>q <Action>(Refactorings.QuickListPopupAction)
+map <leader>r <Action>(RenameElement)
+map <leader>m <Action>(ExtractMethod)
+map <leader>q <Action>(Refactorings.QuickListPopupAction)
 
-map <c-\>e <Action>(ActivateProblemsViewToolWindow)
+" =============================================================================
+" Mostra "actions" da IDE executados para que possam ser mapeados
+" =============================================================================
+set trackactionids
 
-map <c-\>v <Action>(SelectIn)
+map <leader>e <Action>(ActivateProblemsViewToolWindow)
 
-map <c-\>o <Action>(RiderFileOpenGroup)
-map <c-\>z <Action>(GotoAction)
+map <leader>v <Action>(SelectIn)
+
+map <leader>o <Action>(RiderFileOpenGroup)
+map <leader>z <Action>(GotoAction)
 
 map <leader>zA :action CollapseAllRegions<CR>
 map <leader>zR :action ExpandAllRegions<CR>
