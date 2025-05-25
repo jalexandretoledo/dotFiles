@@ -12,4 +12,4 @@ echo Configurando paths específicos de d2020...
 # -- adicionados em /etc/environment
 
 
-export _RUN_ORDER_=${_RUN_ORDER_}:.bash_paths.local.d2020"
+export _RUN_ORDER_=${_RUN_ORDER_}:.bash_paths.local.d2020
