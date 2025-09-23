@@ -105,3 +105,5 @@ export _RUN_ORDER_=${_RUN_ORDER_}:.bashrc
 [[ $- != *i* ]] && return
 # Otherwise start tmux
 [[ -z "$TMUX" ]] && exec tmux
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
