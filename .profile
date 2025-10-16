@@ -63,3 +63,4 @@ if [ -d "${XDG_CONFIG_HOME}/nvm" ] ; then
     #
     export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 fi
+. "$HOME/.cargo/env"
