@@ -52,7 +52,7 @@ def logCmp(a, b, ignore, newFmt, comp):
     for filename in comp.diff_files:
         if filtro(os.path.join(a, filename)):
             if filtro(os.path.join(b, filename)):
-                diff_files.append((a, b, filename))
+                diferentes.append((a, b, filename))
 
     for sub, obj in comp.subdirs.items():
         p1 = os.path.join(a, sub)

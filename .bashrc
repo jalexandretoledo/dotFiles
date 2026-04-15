@@ -106,3 +106,5 @@ export _RUN_ORDER_=${_RUN_ORDER_}:.bashrc
 # Otherwise start tmux
 [[ -z "$TMUX" ]] && exec tmux
 
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+. "$HOME/.cargo/env"

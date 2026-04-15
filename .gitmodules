@@ -16,9 +16,6 @@
 [submodule "vim/pack/plugins/start/vim-gnupg"]
 	path = vim/pack/plugins/start/vim-gnupg
 	url = https://github.com/jamessan/vim-gnupg
-[submodule "vim/pack/plugins/opt/coc.nvim"]
-	path = vim/pack/plugins/opt/coc.nvim
-	url = https://github.com/neoclide/coc.nvim
 [submodule "vim/pack/plugins/opt/vimcolors.git"]
 	path = vim/pack/plugins/opt/vimcolors.git
 	url = https://github.com/elmindreda/vimcolors.git
