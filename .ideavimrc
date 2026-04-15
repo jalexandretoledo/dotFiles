@@ -107,6 +107,13 @@ set nobackup
 set nowritebackup
 set noswapfile
 
+
+let g:WhichKeyDesc_debugging = "<leader>t Show Navigation Bar"
+map <leader>t <Action>(ShowNavBar)
+
+let g:WhichKeyDesc_debugging = "<leader>d Go to Implementation"
+map <leader>d <Action>(GotoImplementation)
+
 "" >>> " Rider IDE Settings
 "" >>> 
 "" >>> 
